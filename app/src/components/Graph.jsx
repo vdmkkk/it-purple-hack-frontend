@@ -12,34 +12,63 @@ defaults.plugins.title.align = "start";
 defaults.plugins.title.font.size = 20;
 defaults.plugins.title.color = "black";
 
+function countEntriesByDay(data) {
+  const counts = {};
 
+  data.forEach(item => {
+    const date = new Date(item.time * 1000);
+    const dateString = date.toISOString().split('T')[0];
 
-export const Graph = ({revenueData, sourceData}) => {
+    if (counts[dateString]) {
+      counts[dateString]++;
+    } else {
+      counts[dateString] = 1;
+    }
+  });
+
+  // Convert the counts object to an array of [date, count] pairs
+  const entries = Object.entries(counts);
+
+  // Sort the array by date
+  entries.sort((a, b) => new Date(a[0]) - new Date(b[0]));
+
+  // If you prefer the result as an object in chronological order
+  const sortedCounts = entries.reduce((acc, [date, count]) => {
+    acc[date] = count;
+    return acc;
+  }, {});
+
+  return sortedCounts; // Or return entries if you prefer the array format
+}
+
+export const Graph = ({mockData, sourceData}) => {
+  // console.log(mockData)
   return (
     <div className="Graph">
       <div className="dataCard revenueCard">
         <Line
           data={{
-            labels: revenueData.map((data) => data.label),
+            // labels: revenueData.map((data) => data.label),
+            labels: ["date", "interest"],
             datasets: [
               {
                 label: "Revenue",
-                data: revenueData.map((data) => data.revenue),
+                data: countEntriesByDay(mockData),
                 backgroundColor: "#064FF0",
                 borderColor: "#064FF0",
               },
-              {
-                label: "Cost",
-                data: revenueData.map((data) => data.cost),
-                backgroundColor: "#FF3030",
-                borderColor: "#FF3030",
-              },
+              // {
+              //   label: "Cost",
+              //   data: revenueData.map((data) => data.cost),
+              //   backgroundColor: "#FF3030",
+              //   borderColor: "#FF3030",
+              // },
             ],
           }}
           options={{
             elements: {
               line: {
-                tension: 0.5,
+                tension: 0.3,
               },
             },
             plugins: {
@@ -51,7 +80,7 @@ export const Graph = ({revenueData, sourceData}) => {
         />
       </div>
 
-      <div className="dataCard customerCard">
+      {/* <div className="dataCard customerCard">
         <Bar
           data={{
             labels: sourceData.map((data) => data.label),
@@ -107,7 +136,7 @@ export const Graph = ({revenueData, sourceData}) => {
             },
           }}
         />
-      </div>
+      </div> */}
     </div>
   );
 };
