@@ -1,11 +1,192 @@
-.login {
+
+
+.back-ground {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    z-index: 1;
+}
+
+.conteiner {
+    padding: 64px 48px 64px 48px;
+    display: flex;
+    justify-content: center;
+    top: 287px;
+    left: 552px;
+    border-radius: 120px;
+    width: 336px;
+    height: 433px;
+    box-shadow: 0px 8px 35px rgba(0, 0, 0, 0.16);
+    gap: 10px;
+    z-index: 2;
+}
+
+.inside-cont {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 240px;
+    height: 305px;
+    gap: 24px;
+}
+
+
+.blue_ball {
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    bottom: 75%;
+    left: 60%;
+    transition: 0.5s ease;
+}
+
+.blue_ball:hover {
+    height: 150px;
+    width: 150px;
+    transition: 0.5s ease;
+}
+
+.purple_ball {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    bottom: 65%;
+    left: 32%;
+    z-index: 1;
+    transition: 0.5s ease;
+}
+
+.purple_ball:hover {
+    height: 70px;
+    width: 70px;
+    transition: 0.5s ease;
+}
+
+.red_ball {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    bottom: 10%;
+    left: 60%;
+    transition: 0.5s ease;
+}
+
+.red_ball:hover {
+    height: 160px;
+    width: 160px;
+    transition: 0.5s ease;
+}
+
+.green_ball {
+    position: absolute;
+    width: 167px;
+    height: 167px;
+    bottom: 8%;
+    left: 28%;
+    transition: 0.5s ease;
+}
+
+.green_ball:hover {
+    height: 180px;
+    width: 180px;
+    transition: 0.5s ease;
+}
+
+.label {
+    height: 228px;
+    height: 59px;
+    font-weight: 400;
+    font-size: 22px;
+    font-family: "Inter";
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-content: center;
+}
+
+.label p {
+    margin: 0px;
+}
+
+.label span {
+    font-family: "Lato" bold;
+    font-weight: 800;
+}
+
+.avito {
+    font-weight: 700;
+}
+
+.line {
+    height: 4px;
     
 }
 
+.input-field {
+    position: relative;
+    display:grid;
+    justify-items: center;
+    gap: 36px;
+}
+
 .input {
-    display: block;
+    position: relative;
+    width: 240px;
+    height: 38px;
+    border-width: 1px;
+    font-size: 16px;
+    font-family: 'Inter';
+    border-radius: 10px;
+    border-color: #DEE2E6; 
+    padding: 5px 19px 5px 16px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.12);
+    transition: 0.3s ease;
+}
+
+.input:hover {
+    transition: 0.3s ease;
+    box-shadow: 3px 7px 20px rgba(0, 0, 0, 0.25);
+}
+
+.input::placeholder {
+    color: #DEE2E6; 
+}
+
+.input:focus {
+    border-color: rgba(150, 95, 234, 1);
 }
 
 .error {
     color: #F00;
+    margin-top: 0px;
+}
+
+.enter-button {
+    display: flex;
+    width: 89px;
+    height: 48px;
+    background-color: #05AAFF;
+    border-radius: 10px;
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.12);
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s ease;
+}
+
+.enter-button:hover {
+    transition: 0.3s ease;
+    background-color: #1698d8;
+}
+
+.enter-button p {
+    font-family: "Inter", sans-serif;
+}
+
+.enter-button:hover {
+    cursor: pointer;
 }
