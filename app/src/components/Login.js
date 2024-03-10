@@ -91,13 +91,13 @@ function Login() {
                         <img src={line} className='line'></img>
                         <div className='input-field'>
                             <input  className='input' value={login} placeholder="example@gmail.com" onFocus={handleFocus}
-        onBlur={handleBlur} onChange={(e) => handleClickLogin(e.target.value)} />
-        
-        <div className='form'>
-                            <input type={isShown ? "text" : "password"} className='input' value={password} placeholder="Введите пароль" onFocus={handleFocus}
-        onBlur={handleBlur} onChange={(e) => handleClickPassword(e.target.value)} />
-        <img onClick={() => setIsShown(!isShown)} src={isShown ? hide : show}/>
-        </div>
+                                    onBlur={handleBlur} onChange={(e) => handleClickLogin(e.target.value)} />
+                                    
+                                    <div className='form'>
+                                                        <input type={isShown ? "text" : "password"} className='input' value={password} placeholder="Введите пароль" onFocus={handleFocus}
+                                    onBlur={handleBlur} onChange={(e) => handleClickPassword(e.target.value)} />
+                                    <img onClick={() => setIsShown(!isShown)} src={isShown ? hide : show}/>
+                                    </div>
 
         
                             <div onClick={(e) => handleLoginBtn(e)} className='enter-button'><p>Войти</p></div>
