@@ -1,4 +1,5 @@
 import './App.css';
+import { useNavigate } from 'react-router-dom';
 import { Graph } from './components/Graph';
 import loop from './assets/icons/search.svg'
 import person from './assets/icons/person-fill.svg'
@@ -26,6 +27,11 @@ import blue from './assets/icons/blue.svg'
 function App() {
 
   const AccountName = 'vdmk'
+
+  let navigate = useNavigate();
+  function handleLogout() {
+    navigate('/login');
+}
 
   return (
     <div className="App">
@@ -66,7 +72,7 @@ function App() {
 
             </div>
 
-            <div className='logout-button'>
+            <div className='logout-button' onClick={handleLogout}>
                   <img src={logoutIcon}/>
                   <h3> Выйти </h3>
             </div>
