@@ -4,7 +4,7 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import "./tailwind.output.css";
+import "./index.css";
 
 // ? ROUTES HERE ? //
 import App from "./App";
