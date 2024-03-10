@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import { Chart as ChartJS, defaults } from "chart.js/auto";
 import { Bar, Doughnut, Line } from "react-chartjs-2";
-
+import 'chartjs-adapter-date-fns';
+import 'chartjs-adapter-moment';
 import "../styles/Graph.css";
 
 defaults.maintainAspectRatio = false;
@@ -11,6 +12,45 @@ defaults.plugins.title.display = true;
 defaults.plugins.title.align = "start";
 defaults.plugins.title.font.size = 20;
 defaults.plugins.title.color = "black";
+
+const options = {
+  // responsive: true,
+  // scales: {
+  //   x: {
+  //     // type: 'time',
+  //     time: {
+  //       unit: 'day',
+  //       tooltipFormat: 'DD MMM',
+  //       displayFormats: {
+  //         day: 'DD MMM',
+  //       },
+  //     min: '2023-01-01',
+  //     max: '2023-01-30',
+  //     },
+  //     title: {
+  //       display: true,
+  //       text: 'Date',
+  //     },
+  //   },
+  //   y: {
+  //     beginAtZero: true,
+  //     title: {
+  //       display: true,
+  //       text: 'Count',
+  //     },
+  //   },
+  // },
+  elements: {
+    line: {
+      tension: 0.3,
+    },
+  },
+  plugins: {
+    title: {
+      text: "Интерес",
+    },
+  },
+};
 
 function countEntriesByDay(data) {
   const counts = {};
@@ -38,7 +78,39 @@ function countEntriesByDay(data) {
     return acc;
   }, {});
 
-  return sortedCounts; // Or return entries if you prefer the array format
+  // const sortedCounts = entries;
+  console.log('suk', entries);
+
+  // return sortedCounts;
+  if (entries.length != 0) {
+    const startDate = entries[0][0];
+    const endDate = entries[entries.length - 1][0];
+
+    // Result array
+    const filledData = [];
+
+    let counterDate = new Date(startDate);
+    let finalDate = new Date(endDate);
+    let counter = 0;
+    while (counterDate <= finalDate) {
+      // console.log(counterDate);
+      // for (let i = 0; i < entries.length; i++) {
+
+      // }
+      let entriesDate = new Date(entries[counter][0]);
+      if (entriesDate.toUTCString() != counterDate.toUTCString()){
+        // console.log(counterDate.toUTCString(), entriesDate.toUTCString())
+        entries.splice(counter, 0, [counterDate.toISOString().split('T')[0], entries[counter - 1][1]]);
+      }
+      // console.log(ent);
+      counterDate.setDate(counterDate.getDate() + 1);
+      counter += 1;
+    }
+    
+    console.log('suk', entries)
+    return entries;
+  } else return [];
+  
 }
 
 
@@ -79,7 +151,7 @@ export const Graph = ({mockData, metadata}) => {
         <Line
           data={{
             // labels: revenueData.map((data) => data.label),
-            labels: ["date", "interest"],
+            labels: [],
             datasets: metadata == "" ? [
               {
                 label: "Запросы",
@@ -88,26 +160,23 @@ export const Graph = ({mockData, metadata}) => {
                 borderColor: "#064FF0",
               },
             ] : getTop5(mockData, metadata).map( (item, key) => {
+              console.log("WTF??", item)
+              var newData = [];
+              for (let i = 0; i < mockData.length; i++) {
+                if (mockData[i][metadata] == item) {
+                  newData.push(mockData[i]);
+                }
+              }
+              console.log(newData);
               return {
                 label: metadata + ": " + item,
-                data: countEntriesByDay(mockData.filter(item1 => item1[metadata] == item)),
+                data: countEntriesByDay(newData),
                 backgroundColor: primaryColors[key],
                 borderColor: primaryColors[key],
               }
             }),
           }}
-          options={{
-            elements: {
-              line: {
-                tension: 0.3,
-              },
-            },
-            plugins: {
-              title: {
-                text: "Monthly Revenue & Cost",
-              },
-            },
-          }}
+          options={options}
         />
       </div>
 
