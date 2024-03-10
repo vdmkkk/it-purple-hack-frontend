@@ -1,0 +1,50 @@
+/* Dropdown.css */
+.dropdown-container {
+    position: relative;
+    width: 200px;
+}
+
+.dropdown-selected {
+    padding: 10px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dropdown-icon {
+    font-size: 12px;
+}
+
+.dropdown-list {
+    position: absolute;
+    width: 100%;
+    border: 1px solid #ccc;
+    background: white;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.dropdown-option {
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.dropdown-option:hover {
+    background-color: lightblue;
+}
+
+.selected {
+    color: green;
+    font-weight: bold;
+}
+
+svg {
+    margin-right: 8px;
+}
