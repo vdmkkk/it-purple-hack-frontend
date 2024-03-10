@@ -1,31 +1,33 @@
 import React, { useState } from 'react';
 import TickIcon from '../../assets/icons/tick.svg';
 import '../../styles/Dropdown.css';
+import mockData from '../../data/mock1.json';
 
-const options = [
-    { id: 1, label: 'Option 1' },
-    { id: 2, label: 'Option 2' },
-    { id: 3, label: 'Option 3' },
-    { id: 4, label: 'Option 4' },
-    { id: 5, label: 'Option 5' },
-];
 
-function Dropdown({id, label, selectedOption, setSelectedOption, isOpen, setIsOpen}) {
+function Dropdown({id, label, selectedOption, setSelectedOption, isOpen, setIsOpen, labels}) {
     const placeholder = label
 
     const toggleDropdown = () => isOpen == id ? setIsOpen(-1) : setIsOpen(id);
 
     const handleSelectOption = (option) => {
-        if (selectedOption && option.id === selectedOption.id) {
-            setSelectedOption({"id": -1, "label": placeholder}); 
-        } else {
-            setSelectedOption(option);
-        }
+        setSelectedOption(option);
         setIsOpen(false);
     };
 
+    console.log(selectedOption);
+
+    if (labels.length == 0) {
+        var options = [
+            {id: 1, label: "Общее"},
+            {id: 2, label: "Топ-5"},
+            {id: 3, label: "Выбрать"}
+        ];
+    } else {
+        var options = labels;
+    }
+
     return (
-        <div className="dropdown-container">
+        <div onTap className="dropdown-container">
             <div className="dropdown-selected" onClick={toggleDropdown}>
                 {selectedOption.label}
                 <div className="dropdown-icon">{isOpen == id ? '▲' : '▼'}</div>

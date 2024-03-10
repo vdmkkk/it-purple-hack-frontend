@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Chart as ChartJS, defaults } from "chart.js/auto";
 import { Bar, Doughnut, Line } from "react-chartjs-2";
 
@@ -41,7 +41,37 @@ function countEntriesByDay(data) {
   return sortedCounts; // Or return entries if you prefer the array format
 }
 
-export const Graph = ({mockData, sourceData}) => {
+
+function getTop5 (data, metadata) {
+  data = data.map((item) => item[metadata]).sort((a, b) => {return a - b});
+  const counts = data.reduce((acc, number) => {
+    acc[number] = (acc[number] || 0) + 1;
+    return acc;
+  }, {});
+
+  
+  // Step 2: Sort the counts in descending order and keep the number
+  const sortedNumbers = Object.entries(counts).sort((a, b) => b[1] - a[1]);
+  
+  // Step 3: Select the top five
+  return sortedNumbers.slice(0, 5).map(entry => parseInt(entry[0]));
+}
+
+const primaryColors = [
+  "#4407F1",
+  "#0828F1",
+  "#064FF0",
+  "#02B4EF",
+  "#00EFDD"
+]
+
+export const Graph = ({mockData, metadata}) => {
+
+  useEffect(() => {
+    if (metadata != "") {
+      console.log(getTop5(mockData, metadata))
+    }
+  }, [metadata])
   // console.log(mockData)
   return (
     <div className="Graph">
@@ -50,20 +80,21 @@ export const Graph = ({mockData, sourceData}) => {
           data={{
             // labels: revenueData.map((data) => data.label),
             labels: ["date", "interest"],
-            datasets: [
+            datasets: metadata == "" ? [
               {
-                label: "Revenue",
+                label: "Запросы",
                 data: countEntriesByDay(mockData),
                 backgroundColor: "#064FF0",
                 borderColor: "#064FF0",
               },
-              // {
-              //   label: "Cost",
-              //   data: revenueData.map((data) => data.cost),
-              //   backgroundColor: "#FF3030",
-              //   borderColor: "#FF3030",
-              // },
-            ],
+            ] : getTop5(mockData, metadata).map( (item, key) => {
+              return {
+                label: metadata + ": " + item,
+                data: countEntriesByDay(mockData.filter(item1 => item1[metadata] == item)),
+                backgroundColor: primaryColors[key],
+                borderColor: primaryColors[key],
+              }
+            }),
           }}
           options={{
             elements: {
