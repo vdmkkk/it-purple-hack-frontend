@@ -10,6 +10,7 @@ import "./index.css";
 // ? ROUTES HERE ? //
 import App from "./App";
 import Login from "./components/Login";
+import TablePage from "./components/TablePage"
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <Login/>
+  }, 
+  {
+    path: "/tables",
+    element: <TablePage/>
   }
 ]);
 

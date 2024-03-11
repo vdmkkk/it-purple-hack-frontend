@@ -1,4 +1,4 @@
-.App {
+.table-page {
   background-color: #F8F9FA;
   /* text-align: center; */
   width: 100%;
@@ -68,7 +68,6 @@
 }
 
 
-
 .wide-line {
   width: 100%;
   bottom: 10%;
@@ -88,4 +87,11 @@
 .right-side {
   padding-right: 25px;
   width: 100%;
+}
+
+.components {
+  margin-left: 10px;
+  display: flex;
+  justify-content:flex-start;
+  gap:10px;
 }

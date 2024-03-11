@@ -69,11 +69,6 @@ function Login() {
             setValue(valueC)
     }
 
-    
-
-
-
-
     return(
         <div className='back-ground'>
             <div className='empty-div'>
