@@ -5,9 +5,16 @@ import sourceData from "../data/sourceData.json";
 import mockData from '../data/mock.json'
 import Dropdown from './reusable/Dropdown';
 import '../styles/Analytics-Market.css';
+import { SidePanel } from './SidePanel';
+
+import loop from '../assets/icons/search.svg'
+import person from '../assets/icons/person-fill.svg'
+
+import wideLine from '../assets/icons/Line-wide.svg'
 
 
 function AnalyticsMarket() {
+    const AccountName = 'vdmk'
     const headerLabels = [
         {"id": 0, "label": 'Запросы цены'},
         {"id": 1, "label": "Создание объявлений"},
@@ -98,30 +105,66 @@ function AnalyticsMarket() {
     // }, [header]);
     
     return (
-        <div className="Analytics">
-            <div className='filters'>
-                <Dropdown id={7} label={"Общее"} selectedOption={header} setSelectedOption={setHeader} isOpen={isOpen} setIsOpen={setIsOpen} labels={headerLabels} />
-                <div className='dropdown-container'>
-                    <Dropdown id={1} label={"Общее"} selectedOption={discountMeta} setSelectedOption={setDiscountMeta} isOpen={isOpen} setIsOpen={setIsOpen} labels={microcategoryMeta.label == 'Топ-5' || regionMeta.label == 'Топ-5' ? secondLabels : mainLabels} />
-                    <div className={discountMeta.label != "Выбрать" ? "dropdown" : "dropdown-active"}>
-                        <Dropdown id={4} label={"Льгота"} selectedOption={discount} setSelectedOption={setDiscount} isOpen={isOpen} setIsOpen={setIsOpen} labels={discountLabels} />
-                    </div>
-                </div>
-                <div className='dropdown-container'>
-                    <Dropdown id={2} label={"Общее"} selectedOption={regionMeta} setSelectedOption={setRegionMeta} isOpen={isOpen} setIsOpen={setIsOpen} labels={microcategoryMeta.label == 'Топ-5' || discountMeta.label == 'Топ-5' ? secondLabels : mainLabels} />
-                    <div className={regionMeta.label != "Выбрать" ? "dropdown" : "dropdown-active"}>
-                        <Dropdown id={5} label={"Регион"} selectedOption={region} setSelectedOption={setRegion} isOpen={isOpen} setIsOpen={setIsOpen}  labels={regionLagels} />
-                    </div>
-                </div>
-                <div className='dropdown-container'>
-                    <Dropdown id={3} label={"Общее"} selectedOption={microcategoryMeta} setSelectedOption={setMicrocategoryMeta} isOpen={isOpen} setIsOpen={setIsOpen} labels={discountMeta.label == 'Топ-5' || regionMeta.label == 'Топ-5' ? secondLabels : mainLabels} />
-                    <div className={microcategoryMeta.label != "Выбрать" ? "dropdown" : "dropdown-active"}>
-                        <Dropdown id={6} label={"Товар"} selectedOption={microcategory} setSelectedOption={setMicrocategory} isOpen={isOpen} setIsOpen={setIsOpen} labels={microcategoryLabels} />
-                    </div>
+    <div className="App">
+
+      <img src={wideLine} className='wide-line'></img>
+       
+        <SidePanel pageState="marketing_page"> </SidePanel>
+
+        <div className='right-side'>
+
+            <div className='header'>
+                <h2>МАРКЕТИНГ</h2>
+                
+                <div className='top-bars'>
+                    
+                      <div className='form-2'>
+                            {/* value={value}  onChange={(e) => handleClickLogin(e.target.value)}*/}
+                            <input  className='search' placeholder="Поиск"/>
+                            <img src={loop}/>
+                      </div>
+
+                      <div className='form-2'>
+                            <div className='profile-button'><p>{AccountName}</p></div>
+                            <img src={person}/>
+                      </div>
+                      
                 </div>
             </div>
-            <Graph mockData={data} metadata={metadataForGraph} type={header}></Graph>
+
+            <div className="Analytics">
+                <div className='filters'>
+                    <Dropdown id={7} label={"Общее"} selectedOption={header} setSelectedOption={setHeader} isOpen={isOpen} setIsOpen={setIsOpen} labels={headerLabels} />
+                    <div className='dropdown-container'>
+                        <Dropdown id={1} label={"Общее"} selectedOption={discountMeta} setSelectedOption={setDiscountMeta} isOpen={isOpen} setIsOpen={setIsOpen} labels={microcategoryMeta.label == 'Топ-5' || regionMeta.label == 'Топ-5' ? secondLabels : mainLabels} />
+                        <div className={discountMeta.label != "Выбрать" ? "dropdown" : "dropdown-active"}>
+                            <Dropdown id={4} label={"Льгота"} selectedOption={discount} setSelectedOption={setDiscount} isOpen={isOpen} setIsOpen={setIsOpen} labels={discountLabels} />
+                        </div>
+                    </div>
+                    <div className='dropdown-container'>
+                        <Dropdown id={2} label={"Общее"} selectedOption={regionMeta} setSelectedOption={setRegionMeta} isOpen={isOpen} setIsOpen={setIsOpen} labels={microcategoryMeta.label == 'Топ-5' || discountMeta.label == 'Топ-5' ? secondLabels : mainLabels} />
+                        <div className={regionMeta.label != "Выбрать" ? "dropdown" : "dropdown-active"}>
+                            <Dropdown id={5} label={"Регион"} selectedOption={region} setSelectedOption={setRegion} isOpen={isOpen} setIsOpen={setIsOpen}  labels={regionLagels} />
+                        </div>
+                    </div>
+                    <div className='dropdown-container'>
+                        <Dropdown id={3} label={"Общее"} selectedOption={microcategoryMeta} setSelectedOption={setMicrocategoryMeta} isOpen={isOpen} setIsOpen={setIsOpen} labels={discountMeta.label == 'Топ-5' || regionMeta.label == 'Топ-5' ? secondLabels : mainLabels} />
+                        <div className={microcategoryMeta.label != "Выбрать" ? "dropdown" : "dropdown-active"}>
+                            <Dropdown id={6} label={"Товар"} selectedOption={microcategory} setSelectedOption={setMicrocategory} isOpen={isOpen} setIsOpen={setIsOpen} labels={microcategoryLabels} />
+                        </div>
+                    </div>
+                </div>
+                <Graph mockData={data} metadata={metadataForGraph} type={header}></Graph>
         </div>
+            
+        </div>
+
+        <div className='title-of-winners'>
+           <strong> Avito </strong>  x <strong> MISIS </strong> x <strong> MIREA </strong>
+        </div>
+
+    </div>
+        
     );
 }
 

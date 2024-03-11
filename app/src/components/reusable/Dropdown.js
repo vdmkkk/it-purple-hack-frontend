@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import TickIcon from '../../assets/icons/tick.svg';
 import '../../styles/Dropdown.css';
 import mockData from '../../data/mock1.json';
+import openDropDown from '../../assets/icons/openDropDown.svg'
+import closeDropDown from '../../assets/icons/closeDropDown.svg'
 
 
 function Dropdown({id, label, selectedOption, setSelectedOption, isOpen, setIsOpen, labels}) {
@@ -19,10 +21,10 @@ function Dropdown({id, label, selectedOption, setSelectedOption, isOpen, setIsOp
     var options = labels;
 
     return (
-        <div onTap className="dropdown-container">
+        <div className="dropdown-container">
             <div className="dropdown-selected" onClick={toggleDropdown}>
                 {selectedOption.label}
-                <div className="dropdown-icon">{isOpen == id ? '▲' : '▼'}</div>
+                <img src={isOpen == id ? openDropDown : closeDropDown} width={12} height={6}/>
             </div>
             {isOpen == id && (
                 <ul className="dropdown-list">
@@ -32,7 +34,6 @@ function Dropdown({id, label, selectedOption, setSelectedOption, isOpen, setIsOp
                             className={`dropdown-option ${selectedOption.id === option.id ? 'selected' : ''}`}
                             onClick={() => handleSelectOption(option)}
                         >
-                            {selectedOption.id === option.id && <img src={TickIcon} width={24} height={24}/>}
                             {option.label}
                         </li>
                     ))}

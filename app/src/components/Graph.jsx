@@ -51,7 +51,7 @@ const options = {
   },
 };
 
-function countEntriesByDay(data) {
+function countEntriesByDay(data, key="none") {
   const counts = {};
 
   data.forEach(item => {
@@ -65,24 +65,45 @@ function countEntriesByDay(data) {
     }
   });
 
+  if (key != "none") {
+    var counts1 = {};
+
+    data.forEach(item => {
+      const date1 = new Date(item.time * 1000);
+      const dateString1 = date1.toISOString().split('T')[0];
+
+      if (counts1[dateString1]) {
+        counts1[dateString1]++;
+      } else {
+        counts1[dateString1] = 1;
+      }
+    });
+    var entries1 = Object.entries(counts);
+    entries1.sort((a, b) => new Date(a[0]) - new Date(b[0]));
+  }
+
   // Convert the counts object to an array of [date, count] pairs
   const entries = Object.entries(counts);
 
+
   // Sort the array by date
   entries.sort((a, b) => new Date(a[0]) - new Date(b[0]));
+  console.log(entries, entries1)
 
   // If you prefer the result as an object in chronological order
-  const sortedCounts = entries.reduce((acc, [date, count]) => {
-    acc[date] = count;
-    return acc;
-  }, {});
 
   // const sortedCounts = entries;
 
   // return sortedCounts;
   if (entries.length != 0) {
-    const startDate = entries[0][0];
-    const endDate = entries[entries.length - 1][0];
+    if (key != "none") {
+      console.log("bruh", [entries[0][0], entries1[0][0]].sort((a, b) => new Date(a) - new Date(b)));
+      var startDate = [entries[0][0], entries1[0][0]].sort((a, b) => new Date(a) - new Date(b))[0];
+      var endDate = [entries[entries.length - 1][0], entries1[entries1.length - 1][0]].sort((a, b) => new Date(a) - new Date(b))[0];
+    } else {
+      var startDate = entries[0][0];
+      var endDate = entries[entries.length - 1][0];
+    }
 
     // Result array
     const filledData = [];
@@ -111,16 +132,17 @@ function countEntriesByDay(data) {
 }
 
 function getConversion(data) {
-  var data_int = countEntriesByDay(data.filter((item) => !item["is_order"]));
-  var data_ord = countEntriesByDay(data.filter((item) => item["is_order"]));
+  var data_int = countEntriesByDay(data.filter((item) => !item["is_order"]), data.filter((item) => item["is_order"]));
+  var data_ord = countEntriesByDay(data.filter((item) => item["is_order"]), data.filter((item) => !item["is_order"]));
   var finalData = [];
-  console.log(data_int, data_ord)
+  // console.log(data_int, data_ord)
   // if ()
   for (let i = 0; i < data_int.length; i++) {
+    // console.log(data_int[i], data_ord[i])
     finalData.push([data_int[i][0], data_ord[i][1] / data_int[i][1]]);
   }
-  console.log('halo')
-  console.log(finalData);
+  // console.log('halo')
+  // console.log(finalData);
   return finalData;
 }
 
@@ -168,7 +190,7 @@ export const Graph = ({mockData, metadata, type}) => {
             datasets: metadata == "" ? [
               {
                 label: type.label,
-                data: type.label == 'Конверсия' ? data : countEntriesByDay(data),
+                data: type.label == 'Конверсия' ? data : countEntriesByDay(mockData),
                 backgroundColor: "#064FF0",
                 borderColor: "#064FF0",
               },

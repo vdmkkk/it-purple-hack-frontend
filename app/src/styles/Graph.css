@@ -1,5 +1,5 @@
 .Graph {
-  height: 100vh;
+  /* height: 100vh;
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -8,13 +8,13 @@
   align-content: center;
   gap: 2vw;
   flex-wrap: wrap;
-  background-color: #ddd;
+  background-color: #ddd; */
 }
 
 .dataCard {
-  background-color: #efefef;
-  border-radius: 0.5em;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  background-color: #FFFFFF;
+  border-radius: 20px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 10px 26px;
   padding: 1em;
 }
 
@@ -24,11 +24,5 @@
 }
 
 .customerCard {
-  width: 50%;
-  height: 20rem;
-}
-
-.categoryCard {
-  width: 40%;
   height: 20rem;
 }
