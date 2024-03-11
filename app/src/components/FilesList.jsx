@@ -2,7 +2,7 @@ import React from "react";
 
 import "../styles/FilesList.css";
 import pinkLine from "../assets/icons/pinkLine.svg"
-import smallFile from "../assets/icons/smallFile.svg"
+import smallFile from "../assets/icons/smallFileDark.svg"
 
 export const FilesList = () => {
 

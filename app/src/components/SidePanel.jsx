@@ -29,15 +29,23 @@ export const SidePanel = ({pageState}) => {
   function handleLogout() {
     navigate('/login');
 }
-  function handleTablePage(e) {
+  function handleTablePage() {
     navigate('/tables');
   }
 
-  function handleMarketingPage(e) {
+  function handleMarketingPage() {
     navigate('/marketing');
   }
 
-  function handleMainPage(e) {
+  function handleShowDiffPage() {
+    navigate('/showdiff');
+  }
+
+  function handleServerPage() {
+    navigate('/server');
+  }
+
+  function handleMainPage() {
     navigate('/');
   }
 
@@ -64,13 +72,13 @@ export const SidePanel = ({pageState}) => {
                   <h3> Маркетинг </h3>
               </div>
 
-              <div className={pageState=="showdiff_page" ? 'choosen-topic' : 'topic'}>
+              <div className={pageState=="showdiff_page" ? 'choosen-topic' : 'topic'} onClick={handleShowDiffPage}>
                   <img src={pageState=='showdiff_page' ? gridIconDark : gridIcon}/>
                   <h3> Изменения </h3>
               </div>
 
-              <div className={pageState=="server-page" ? 'choosen-topic' : 'topic'}>
-                  <img src={pageState=='server' ? serverDark : server}/>
+              <div className={pageState=="server-page" ? 'choosen-topic' : 'topic'} onClick={handleServerPage}>
+                  <img src={pageState=='server-page' ? serverDark : server}/>
                   <h3> Сервер </h3>
               </div>
 

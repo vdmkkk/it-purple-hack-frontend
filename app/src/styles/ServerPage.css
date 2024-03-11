@@ -1,5 +1,4 @@
-
-.App {
+.server-page {
   background-color: #F8F9FA;
   /* text-align: center; */
   width: 100%;
@@ -69,10 +68,16 @@
 }
 
 
-
-.wide-line {
+.wide-line-1 {
   width: 100%;
   bottom: 10%;
+  position: fixed;
+  z-index: 1;
+}
+
+.wide-line-2 {
+  width: 100%;
+  bottom: 30%;
   position: fixed;
   z-index: 1;
 }
@@ -89,4 +94,11 @@
 .right-side {
   padding-right: 25px;
   width: 100%;
+}
+
+.components {
+  margin-left: 10px;
+  display: flex;
+  justify-content:flex-start;
+  gap:25px;
 }

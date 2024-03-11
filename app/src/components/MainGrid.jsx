@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 import "../styles/MainGrid.css";
 
@@ -14,15 +15,39 @@ import red from '../assets/icons/red.svg'
 import blueLine from '../assets/icons/blueLine.svg'
 import bigServer from '../assets/icons/bigServer.svg'
 import blue from '../assets/icons/blue.svg'
+import ShowDiffPage from "./ShowDiffPage";
 
 
 export const MainGrid = () => {
+  let navigate = useNavigate();
+  function handleLogout() {
+    navigate('/login');
+}
+  function handleTablePage(e) {
+    navigate('/tables');
+  }
+
+  function handleMarketingPage(e) {
+    navigate('/marketing');
+  }
+
+  function handleShowDiffPage(e) {
+    navigate('/showdiff');
+  }
+
+  function handleServerPage(e) {
+    navigate('/server');
+  }
+
+  function handleMainPage(e) {
+    navigate('/');
+  }
 
 
   return (
     <div className='main-grid'>
 
-            <div className='grid-conteiner'>
+            <div className='grid-conteiner' onClick={handleTablePage}>
               <div className='text-conteiner'>
                   <h2>ФАЙЛЫ</h2>
                   <img src={pinkLine}/>
@@ -32,7 +57,7 @@ export const MainGrid = () => {
               <img className='color-icon' src={purple}/>
             </div>
 
-            <div className='grid-conteiner'>
+            <div className='grid-conteiner' onClick={handleMarketingPage}>
               <div className='text-conteiner'>
                   <h2>МАРКЕТИНГ</h2>
                   <img src={greenLine}/>
@@ -42,7 +67,7 @@ export const MainGrid = () => {
               <img className='color-icon' src={green}/>
             </div>
 
-            <div className='grid-conteiner'>
+            <div className='grid-conteiner' onClick={handleShowDiffPage}>
               <div className='text-conteiner'>
                   <h2>ИЗМЕНЕНИЯ</h2>
                   <img src={redLine}/>
@@ -52,7 +77,7 @@ export const MainGrid = () => {
               <img className='color-icon' src={red}/>
             </div>
 
-            <div className='grid-conteiner'>
+            <div className='grid-conteiner' onClick={handleServerPage}>
               <div className='text-conteiner'>
                   <h2>СЕРВЕР</h2>
                   <img src={blueLine}/>
