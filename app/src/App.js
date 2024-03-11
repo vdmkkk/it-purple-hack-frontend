@@ -11,6 +11,10 @@ import { PopUp } from './components/PopUp';
 import { FilesList } from './components/FilesList';
 import { TableView } from './components/TableView';
 
+
+import revenueData from "./data/revenueData.json";
+import sourceData from "./data/sourceData.json";
+
 function App() {
 
   

@@ -2,6 +2,9 @@ import React from 'react';
 import { useState } from 'react';
 import '../styles/Login.css';
 import { useNavigate } from 'react-router-dom';
+import show from '../assets/icons/show.svg'
+import hide from '../assets/icons/hide.svg'
+
 
 import line from "../assets/icons/Line.svg"
 import green_ball from "../assets/icons/green_ball.svg"

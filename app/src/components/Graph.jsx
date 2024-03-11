@@ -4,9 +4,6 @@ import { Bar, Doughnut, Line } from "react-chartjs-2";
 
 import "../styles/Graph.css";
 
-import revenueData from "../data/revenueData.json";
-import sourceData from "../data/sourceData.json";
-
 defaults.maintainAspectRatio = false;
 defaults.responsive = true;
 
@@ -15,7 +12,9 @@ defaults.plugins.title.align = "start";
 defaults.plugins.title.font.size = 20;
 defaults.plugins.title.color = "black";
 
-export const Graph = () => {
+
+
+export const Graph = ({revenueData, sourceData}) => {
   return (
     <div className="Graph">
       <div className="dataCard revenueCard">
