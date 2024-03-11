@@ -12,9 +12,6 @@ import blue_ball from "../assets/icons/blue_ball.svg"
 import red_ball from "../assets/icons/red_ball.svg"
 import purple_ball from "../assets/icons/purple_ball.svg"
 
-import show from '../assets/icons/show.svg'
-import hide from '../assets/icons/hide.svg'
-
 function Login() {
 
     let navigate = useNavigate();
@@ -74,7 +71,7 @@ function Login() {
 
     return(
         <div className='back-ground'>
-            <div className='empty-div'>
+            <div className='empty-div-login'>
                 <img src={blue_ball} className='blue_ball'></img>
                 <img src={green_ball} className='green_ball'></img>
                 <img src={red_ball} className='red_ball'></img>
