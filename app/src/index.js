@@ -12,6 +12,8 @@ import App from "./App";
 import Login from "./components/Login";
 import AnalyticsMarket from "./components/Analytics-Market";
 import TablePage from "./components/TablePage"
+import ShowDiffPage from "./components/ShowDiffPage";
+import ServerPage from "./components/ServerPage";
 
 const router = createBrowserRouter([
   {
@@ -29,6 +31,14 @@ const router = createBrowserRouter([
   {
     path: "/tables",
     element: <TablePage/>
+  },
+  {
+    path: "/showdiff",
+    element: <ShowDiffPage/>
+  },
+  {
+    path: "/server",
+    element: <ServerPage/>
   }
 ]);
 

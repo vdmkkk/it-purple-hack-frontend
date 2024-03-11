@@ -48,8 +48,9 @@ export const TableView = () => {
           </div>
 
           <div className="table">
-               {isPopUp==true ? <PopUp/> : <div></div> }
+               {isPopUp==true ? <PopUp isPopUpShow={isPopUpShow}/> : <div></div> }
                <div className="data">
+                    {isPopUp==true ? <div className="blured-data"></div> : <div></div> }
                     <DataTable data={tableData}/>
                </div>
 

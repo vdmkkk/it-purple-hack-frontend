@@ -1,12 +1,12 @@
 import React from 'react';
 import { useState } from 'react';
-import '../styles/TablePage.css';
+import '../styles/ServerPage.css';
 
 import { SidePanel } from './SidePanel';
 import { PopUp } from './PopUp';
 
-import pinkWideLine1 from '../assets/icons/pinkWideLine1.svg'
-import pinkWideLine2 from '../assets/icons/pinkWideLine2.svg'
+import redWideLine1 from '../assets/icons/redWideLine1.svg'
+import redWideLine2 from '../assets/icons/redWideLine2.svg'
 
 
 import { FilesList } from './FilesList';
@@ -15,19 +15,19 @@ import { TableView } from './TableView';
 import loop from '../assets/icons/search.svg'
 import person from '../assets/icons/person-fill.svg'
 
-function TablePage() {
+function ServerPage() {
     const AccountName = 'vdmk'
     return(
-        <div className='table-page'>
-                <img src={pinkWideLine1} className='wide-line-1'></img>
-                <img src={pinkWideLine2} className='wide-line-2'></img>
+        <div className='server-page'>
+                <img src={redWideLine1} className='wide-line-1'></img>
+                <img src={redWideLine2} className='wide-line-2'></img>
                 
-                <SidePanel pageState="files_page"> </SidePanel>
+                <SidePanel pageState="server-page"> </SidePanel>
 
                 <div className='right-side'>
 
                     <div className='header'>
-                        <h2>ФАЙЛЫ</h2>
+                        <h2>СЕРВЕР</h2>
                         
                         <div className='top-bars'>
                             
@@ -46,8 +46,7 @@ function TablePage() {
                     </div>
 
                     <div className='components'>
-                        <FilesList/>
-                        <TableView/>
+                        
                     </div>
                     {/* <PopUp/> */}
                 </div>
@@ -61,4 +60,4 @@ function TablePage() {
     );
 }
 
-export default TablePage;
+export default ServerPage;
