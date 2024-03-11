@@ -71,7 +71,7 @@ function Login() {
 
     return(
         <div className='back-ground'>
-            <div className='empty-div'>
+            <div className='empty-div-login'>
                 <img src={blue_ball} className='blue_ball'></img>
                 <img src={green_ball} className='green_ball'></img>
                 <img src={red_ball} className='red_ball'></img>
