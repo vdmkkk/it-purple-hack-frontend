@@ -33,6 +33,10 @@ export const SidePanel = ({pageState}) => {
     navigate('/tables');
   }
 
+  function handleMarketingPage(e) {
+    navigate('/marketing');
+  }
+
   function handleMainPage(e) {
     navigate('/');
   }
@@ -55,7 +59,7 @@ export const SidePanel = ({pageState}) => {
                   <h3> Файлы </h3>
               </div>
 
-              <div className={pageState=="marketing_page" ? 'choosen-topic' : 'topic'}>
+              <div className={pageState=="marketing_page" ? 'choosen-topic' : 'topic'} onClick={handleMarketingPage}>
                   <img src={pageState=='marketing_page' ? barIconDark : barIcon}/>
                   <h3> Маркетинг </h3>
               </div>
