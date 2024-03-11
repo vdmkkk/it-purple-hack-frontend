@@ -10,6 +10,7 @@ import "./index.css";
 // ? ROUTES HERE ? //
 import App from "./App";
 import Login from "./components/Login";
+import AnalyticsMarket from "./components/Analytics-Market";
 import TablePage from "./components/TablePage"
 
 const router = createBrowserRouter([
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <Login/>
+  },
+  {
+    path: "/marketing",
+    element: <AnalyticsMarket/>
   }, 
   {
     path: "/tables",

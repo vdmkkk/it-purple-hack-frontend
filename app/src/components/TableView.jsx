@@ -7,18 +7,25 @@ import DataTable from "./DataTable";
 import bruh from "../data/matrix-mock.json"
 import backBar from "../assets/icons/grayNavBar.svg"
 import pinkBar from "../assets/icons/pinkNavBar.svg"
+import { PopUp } from "./PopUp";
 
 export const TableView = () => {
 
+
      const [tableData, setTableData] = useState([]);
+     const [isPopUp, isPopUpShow] = useState(false);
      useEffect(() => {
           setTableData(bruh);
      }, []);
 
+     function handleSave() {
+          isPopUpShow(true);
+     }
+
   return (
     <div className='table-conteiner'>
           <div className="buttons-table">
-               <div className="saving-button"><p>Сохранить изменения</p></div>
+               <div className="saving-button" onClick={handleSave}><p>Сохранить изменения</p></div>
 
                <div className="search-fields">
                     <div className="search-form">
@@ -41,9 +48,11 @@ export const TableView = () => {
           </div>
 
           <div className="table">
+               {isPopUp==true ? <PopUp/> : <div></div> }
                <div className="data">
                     <DataTable data={tableData}/>
                </div>
+
           </div>
           
     </div>

@@ -7,7 +7,7 @@
     z-index: 1;
 }
 
-.empty-div {
+.empty-div-login {
     position: relative;
 }
 
@@ -26,6 +26,7 @@
     gap: 10px;
     z-index: 10;
 }
+
 
 
 
