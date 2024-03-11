@@ -12,8 +12,6 @@ import blue_ball from "../assets/icons/blue_ball.svg"
 import red_ball from "../assets/icons/red_ball.svg"
 import purple_ball from "../assets/icons/purple_ball.svg"
 
-import show from '../assets/icons/show.svg'
-import hide from '../assets/icons/hide.svg'
 
 function Login() {
 
