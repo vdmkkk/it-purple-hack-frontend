@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Chart as ChartJS, defaults } from "chart.js/auto";
 import { Bar, Doughnut, Line } from "react-chartjs-2";
 import 'chartjs-adapter-date-fns';
@@ -47,7 +47,6 @@ const options = {
   },
   plugins: {
     title: {
-      text: "Интерес",
     },
   },
 };
@@ -79,7 +78,6 @@ function countEntriesByDay(data) {
   }, {});
 
   // const sortedCounts = entries;
-  console.log('suk', entries);
 
   // return sortedCounts;
   if (entries.length != 0) {
@@ -107,10 +105,23 @@ function countEntriesByDay(data) {
       counter += 1;
     }
     
-    console.log('suk', entries)
     return entries;
   } else return [];
   
+}
+
+function getConversion(data) {
+  var data_int = countEntriesByDay(data.filter((item) => !item["is_order"]));
+  var data_ord = countEntriesByDay(data.filter((item) => item["is_order"]));
+  var finalData = [];
+  console.log(data_int, data_ord)
+  // if ()
+  for (let i = 0; i < data_int.length; i++) {
+    finalData.push([data_int[i][0], data_ord[i][1] / data_int[i][1]]);
+  }
+  console.log('halo')
+  console.log(finalData);
+  return finalData;
 }
 
 
@@ -137,13 +148,15 @@ const primaryColors = [
   "#00EFDD"
 ]
 
-export const Graph = ({mockData, metadata}) => {
+export const Graph = ({mockData, metadata, type}) => {
+
+  const [data, setData] = useState(mockData);
 
   useEffect(() => {
-    if (metadata != "") {
-      console.log(getTop5(mockData, metadata))
-    }
-  }, [metadata])
+    if (type.label == "Конверсия") {
+      setData(getConversion(mockData));
+    } else setData(mockData);
+  }, [mockData])
   // console.log(mockData)
   return (
     <div className="Graph">
@@ -154,20 +167,18 @@ export const Graph = ({mockData, metadata}) => {
             labels: [],
             datasets: metadata == "" ? [
               {
-                label: "Запросы",
-                data: countEntriesByDay(mockData),
+                label: type.label,
+                data: type.label == 'Конверсия' ? data : countEntriesByDay(data),
                 backgroundColor: "#064FF0",
                 borderColor: "#064FF0",
               },
-            ] : getTop5(mockData, metadata).map( (item, key) => {
-              console.log("WTF??", item)
+            ] : getTop5(data, metadata).map( (item, key) => {
               var newData = [];
-              for (let i = 0; i < mockData.length; i++) {
-                if (mockData[i][metadata] == item) {
-                  newData.push(mockData[i]);
+              for (let i = 0; i < data.length; i++) {
+                if (data[i][metadata] == item) {
+                  newData.push(data[i]);
                 }
               }
-              console.log(newData);
               return {
                 label: metadata + ": " + item,
                 data: countEntriesByDay(newData),

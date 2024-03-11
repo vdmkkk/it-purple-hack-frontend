@@ -14,17 +14,9 @@ function Dropdown({id, label, selectedOption, setSelectedOption, isOpen, setIsOp
         setIsOpen(false);
     };
 
-    console.log(selectedOption);
 
-    if (labels.length == 0) {
-        var options = [
-            {id: 1, label: "Общее"},
-            {id: 2, label: "Топ-5"},
-            {id: 3, label: "Выбрать"}
-        ];
-    } else {
-        var options = labels;
-    }
+    
+    var options = labels;
 
     return (
         <div onTap className="dropdown-container">

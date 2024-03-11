@@ -8,7 +8,13 @@ import '../styles/Analytics-Market.css';
 
 
 function AnalyticsMarket() {
-
+    const headerLabels = [
+        {"id": 0, "label": 'Запросы цены'},
+        {"id": 1, "label": "Создание объявлений"},
+        {"id": 2, "label": "Конверсия"},
+        {"id": 3, "label": 'Тенденция цен'}
+    ];
+    const [header, setHeader] = useState(headerLabels[0]);
     const [discountMeta, setDiscountMeta] = useState({"id": 0, "label": "Общее"})
     const [regionMeta, setRegionMeta] = useState({"id": 0, "label": "Общее"})
     const [microcategoryMeta, setMicrocategoryMeta] = useState({"id": 0, "label": "Общее"})
@@ -26,7 +32,7 @@ function AnalyticsMarket() {
 
     const [isOpen, setIsOpen] = useState(-1);
 
-    const [data, setData] = useState([]);
+    const [data, setData] = useState(mockData);
 
 
     function applyDiscount(newData) {
@@ -43,6 +49,9 @@ function AnalyticsMarket() {
         if (microcategoryMeta.label == "Выбрать") return newData.filter((item) => item["microcategory_id"] == parseInt(microcategory.label));
         else return newData;
     }
+    
+    const mainLabels = [{id: 1, label: "Общее"}, {id: 2, label: "Топ-5"}, {id: 3, label: "Выбрать"}];
+    const secondLabels = [{id: 1, label: "Общее"}, {id: 3, label: "Выбрать"}];
 
 
     useEffect(() => {
@@ -57,41 +66,61 @@ function AnalyticsMarket() {
         // if (microcategoryMeta.label == "Выбрать") {
         //     newData = newData.filter((item) => item["microcategory_id"] == parseInt(microcategory.label));
         // }
-        setData(applyDiscount(applyMicrocategory(applyRegion(mockData))));
-
+        if (header.label == 'Запросы цены') {
+            setData(applyDiscount(applyMicrocategory(applyRegion(mockData))).filter((item) => (!item["is_order"])));
+            // setMetadataForGraph("")
+        } else if (header.label == 'Создание объявлений') {
+            setData(applyDiscount(applyMicrocategory(applyRegion(mockData))).filter((item) => (item["is_order"])));
+            // setMetadataForGraph("")
+        } else if (header.label == 'Конверсия') {
+            console.log("??")
+            setData(applyDiscount(applyMicrocategory(applyRegion(mockData))));
+        } else if (header.label == 'Тенденция цен') {
+            setData(applyDiscount(applyMicrocategory(applyRegion(mockData))));
+            // setMetadataForGraph("");
+        }
+        
+        // setData();
+        
         setDiscountLabels(applyMicrocategory(applyRegion(mockData)).map(item => item["discount_id"]).filter((value, index, self) => self.indexOf(value) === index).sort((a, b) => a - b).map((option, key) => ({ id: key, label: option })));
         setMicrocategoryLabels(applyDiscount(applyRegion(mockData)).map(item => item["microcategory_id"]).filter((value, index, self) => self.indexOf(value) === index).sort((a, b) => a - b).map((option, key) => ({ id: key, label: option })));
         setRegionLabels(applyMicrocategory(applyDiscount(mockData)).map(item => item["region_id"]).filter((value, index, self) => self.indexOf(value) === index).sort((a, b) => a - b).map((option, key) => ({ id: key, label: option })));
 
         // console.log(data);
         // if (discountMeta.label != "Выбрать") setDiscount(discountLabels[0]);
-        setMetadataForGraph(microcategoryMeta.label == "Топ-5" ? "microcategory_id" : regionMeta.label == "Топ-5" ? "region_id" : discountMeta.label == "Топ-5" ? "discount_id" : "")
+        setMetadataForGraph(microcategoryMeta.label == "Топ-5" ? "microcategory_id" : regionMeta.label == "Топ-5" ? "region_id" : discountMeta.label == "Топ-5" ? "discount_id" : "");
+
         
-    }, [discount, region, microcategory, discountMeta, regionMeta, microcategoryMeta]);
+    }, [discount, region, microcategory, discountMeta, regionMeta, microcategoryMeta, header]);
+
+    // useEffect(()=> {
+        
+    // }, [header]);
     
     return (
         <div className="Analytics">
             <div className='filters'>
+                <Dropdown id={7} label={"Общее"} selectedOption={header} setSelectedOption={setHeader} isOpen={isOpen} setIsOpen={setIsOpen} labels={headerLabels} />
                 <div className='dropdown-container'>
-                    <Dropdown id={1} label={"Общее"} selectedOption={discountMeta} setSelectedOption={setDiscountMeta} isOpen={isOpen} setIsOpen={setIsOpen} labels={[]} />
+                    <Dropdown id={1} label={"Общее"} selectedOption={discountMeta} setSelectedOption={setDiscountMeta} isOpen={isOpen} setIsOpen={setIsOpen} labels={microcategoryMeta.label == 'Топ-5' || regionMeta.label == 'Топ-5' ? secondLabels : mainLabels} />
                     <div className={discountMeta.label != "Выбрать" ? "dropdown" : "dropdown-active"}>
                         <Dropdown id={4} label={"Льгота"} selectedOption={discount} setSelectedOption={setDiscount} isOpen={isOpen} setIsOpen={setIsOpen} labels={discountLabels} />
                     </div>
                 </div>
                 <div className='dropdown-container'>
-                    <Dropdown id={2} label={"Общее"} selectedOption={regionMeta} setSelectedOption={setRegionMeta} isOpen={isOpen} setIsOpen={setIsOpen} labels={[]}data={data} />
+                    <Dropdown id={2} label={"Общее"} selectedOption={regionMeta} setSelectedOption={setRegionMeta} isOpen={isOpen} setIsOpen={setIsOpen} labels={microcategoryMeta.label == 'Топ-5' || discountMeta.label == 'Топ-5' ? secondLabels : mainLabels} />
                     <div className={regionMeta.label != "Выбрать" ? "dropdown" : "dropdown-active"}>
                         <Dropdown id={5} label={"Регион"} selectedOption={region} setSelectedOption={setRegion} isOpen={isOpen} setIsOpen={setIsOpen}  labels={regionLagels} />
                     </div>
                 </div>
                 <div className='dropdown-container'>
-                    <Dropdown id={3} label={"Общее"} selectedOption={microcategoryMeta} setSelectedOption={setMicrocategoryMeta} isOpen={isOpen} setIsOpen={setIsOpen} labels={[]} />
+                    <Dropdown id={3} label={"Общее"} selectedOption={microcategoryMeta} setSelectedOption={setMicrocategoryMeta} isOpen={isOpen} setIsOpen={setIsOpen} labels={discountMeta.label == 'Топ-5' || regionMeta.label == 'Топ-5' ? secondLabels : mainLabels} />
                     <div className={microcategoryMeta.label != "Выбрать" ? "dropdown" : "dropdown-active"}>
                         <Dropdown id={6} label={"Товар"} selectedOption={microcategory} setSelectedOption={setMicrocategory} isOpen={isOpen} setIsOpen={setIsOpen} labels={microcategoryLabels} />
                     </div>
                 </div>
             </div>
-            <Graph mockData={data} metadata={metadataForGraph}></Graph>
+            <Graph mockData={data} metadata={metadataForGraph} type={header}></Graph>
         </div>
     );
 }
