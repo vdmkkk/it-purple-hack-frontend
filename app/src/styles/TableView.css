@@ -88,7 +88,7 @@
 
 .table {
   display: flex;
-  gap: 10px;
+  
   justify-content: center;
 }
 
@@ -99,18 +99,17 @@
   background-color: #FBF9FC;
   border: 2px solid #9747FF;
   overflow: scroll;
+  
 }
 
-
-
-
-.navBar {
-  position: relative;
-  width: 5px;
-}
-
-.pinkBar {
+.blured-data {
   position: absolute;
-  top:0;
-  right: 0px;
+  width: 632px;
+  height: 636px;
+  border-radius: 20px;
+  background-color: #FBF9FC;
+  /* border: 2px solid #9747FF; */
+  overflow: scroll;
+  z-index: 999;
+  opacity: 0.7;
 }

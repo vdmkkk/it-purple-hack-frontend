@@ -5,8 +5,15 @@ import "../styles/PopUp.css";
 import warning from '../assets/icons/warning.svg'
 
 
-export const PopUp = () => {
+export const PopUp = ({isPopUpShow}) => {
 
+    function handleYes() {
+        isPopUpShow(false)
+    }
+
+    function handleCancel() {
+        isPopUpShow(false)
+    }
 
   return (
     <div className='pop-up'>
@@ -20,11 +27,11 @@ export const PopUp = () => {
 
         <div className="buttons">
 
-            <div className="yes-button">
+            <div className="yes-button" onClick={handleYes}>
                 <p>Да</p>
             </div>
 
-            <div className="cancel-button">
+            <div className="cancel-button" onClick={handleCancel}>
                 <p>Отмена</p>
             </div>
 
