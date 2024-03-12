@@ -33,6 +33,7 @@
 
 .change-button {
   position: relative;
+  cursor: pointer;
   width: 172px;
   height: 38px;
   align-items: center;

@@ -27,14 +27,14 @@ function DiffCont() {
                 </div>
 
                 <div className='slider-before'>
-                      <img src={leftDoubleArrow}></img>
-                      <img src={leftArrow}></img>
+                      <div className='number-cont'><img src={leftDoubleArrow}></img></div>
+                      <div className='number-cont'><img src={leftArrow}></img></div>
                       <div className='number-cont-active'><p>1</p></div>
                       <div className='number-cont'><p>2</p></div>
                       <div className='number-cont'><p>3</p></div>
                       <div className='number-cont'><p>4</p></div>
-                      <img src={rightArrow}></img>
-                      <img src={rightDoubleArrow}></img>
+                      <div className='number-cont'><img src={rightArrow}></img></div>
+                      <div className='number-cont'><img src={rightDoubleArrow}></img></div>
                 </div>
           </div>
 
@@ -51,14 +51,14 @@ function DiffCont() {
                     <DiffTable data={bruh}></DiffTable>
                 </div>
                 <div className='slider-after'>
-                      <img src={leftDoubleArrow}></img>
-                      <img src={leftArrow}></img>
+                      <div className='number-cont'><img src={leftDoubleArrow}></img></div>
+                      <div className='number-cont'><img src={leftArrow}></img></div>
                       <div className='number-cont-active'><p>1</p></div>
                       <div className='number-cont'><p>2</p></div>
                       <div className='number-cont'><p>3</p></div>
                       <div className='number-cont'><p>4</p></div>
-                      <img src={rightArrow}></img>
-                      <img src={rightDoubleArrow}></img>
+                      <div className='number-cont'><img src={rightArrow}></img></div>
+                      <div className='number-cont'><img src={rightDoubleArrow}></img></div>
                 </div>
                 
           </div>
