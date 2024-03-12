@@ -7,9 +7,25 @@
   z-index: 2;
   display: inline-grid;
   position: relative;
-  height: fit-content;
+  /* min-height: 10vh; */
+  /* margin-top: 550px; */
+  height: 100vh;
+  min-width: 350px;
+  top:0;
+  justify-content: center;
+  justify-items: start;
+  align-items: center;
+  transition: 0.3s ease;
+  
+}
+
+.insidePanel {
+  z-index: 2;
+  display: inline-grid;
+  position: fixed;
+  min-height: 93%;
   margin-left: 55px;
-  margin-top: 10px;
+  
   padding-left: 55px;
   background-color: #FFFFFF;
   border-radius: 20px;
@@ -26,16 +42,16 @@
   border: 2px solid #DEE2E6;
 }
 
-.sidePannel:hover {
+.insidePanel:hover {
   box-shadow: 3px 7px 20px rgba(0, 0, 0, 0.25);
 }
 
-.sidePannel h1 {
+.insidePanel h1 {
   margin-block-end: 0px;
   cursor:default;
 }
 
-.sidePannel h2 {
+.insidePanel h2 {
   margin-block-start: 0px;
   font-weight: 300;
   cursor:default;

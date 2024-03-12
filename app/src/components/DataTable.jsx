@@ -12,7 +12,7 @@ function DataTable({ data }) {
               <p>{item["microcategory_id"]}</p>
               <p>{item["region_id"]}</p>
 
-              <div className='input-div'><input defaultValue={item["price"]}></input></div>
+              <div className='input-div'><input defaultValue={item["price"]} className='data-input'></input></div>
               
               <div className='empty-div'></div>
               <div className='icons-div'>
