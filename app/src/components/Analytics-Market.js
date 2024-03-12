@@ -10,7 +10,8 @@ import { SidePanel } from './SidePanel';
 import loop from '../assets/icons/search.svg'
 import person from '../assets/icons/person-fill.svg'
 
-import wideLine from '../assets/icons/Line-wide.svg'
+import greenWideLine1 from '../assets/icons/greenWideLine1.svg'
+import greenWideLine2 from '../assets/icons/greenWideLine2.svg'
 
 
 function AnalyticsMarket() {
@@ -107,7 +108,8 @@ function AnalyticsMarket() {
     return (
     <div className="App">
 
-      <img src={wideLine} className='wide-line'></img>
+      <img src={greenWideLine1} className='green-wide-line-1'></img>
+      <img src={greenWideLine2} className='green-wide-line-2'></img>
        
         <SidePanel pageState="marketing_page"> </SidePanel>
 

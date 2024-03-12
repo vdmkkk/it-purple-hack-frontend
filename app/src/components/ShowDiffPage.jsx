@@ -14,6 +14,8 @@ import { TableView } from './TableView';
 
 import loop from '../assets/icons/search.svg'
 import person from '../assets/icons/person-fill.svg'
+import ChooseTable from './ChooseTable';
+import DiffCont from './DiffCont';
 
 function ShowDiffPage() {
     const AccountName = 'vdmk'
@@ -45,8 +47,9 @@ function ShowDiffPage() {
                         </div>
                     </div>
 
-                    <div className='components'>
-                        
+                    <div className='components-diff'>
+                        <ChooseTable></ChooseTable>
+                        <DiffCont></DiffCont>
                     </div>
                     {/* <PopUp/> */}
                 </div>

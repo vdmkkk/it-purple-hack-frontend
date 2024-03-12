@@ -23,7 +23,7 @@ import logoutIcon from '../assets/icons/logout.svg'
 export const SidePanel = ({pageState}) => {
 
   const [choosenPage, setChoosen] = useState(pageState);
-  console.log(pageState)
+  
 
   let navigate = useNavigate();
   function handleLogout() {
