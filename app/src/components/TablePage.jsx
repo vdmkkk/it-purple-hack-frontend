@@ -49,7 +49,6 @@ function TablePage() {
                         <FilesList/>
                         <TableView/>
                     </div>
-                    {/* <PopUp/> */}
                 </div>
 
                 <div className='title-of-winners'>

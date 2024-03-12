@@ -7,9 +7,9 @@ import selectarrow from "../assets/icons/selectarrow.svg"
 
 function ChooseTable() {
 
-  const [discount, setDiscount] = useState({"id": 0, "label": "hui"}, {"id": 1, "label": "ass"}, {"id": 2, "label": "piska"});
+  const [discount, setDiscount] = useState({"id": 0, "label": "baseline"}, {"id": 1, "label": "discounts_1"}, {"id": 2, "label": "discounts_2"}, {"id":3, "label": "discounts_3"});
   const [isOpen, setIsOpen] = useState(-1);
-  const [discountLabels, setDiscountLabels] = useState([{"id": 0, "label": "hui"}, {"id": 1, "label": "ass"}, {"id": 2, "label": "piska"}]);
+  const [discountLabels, setDiscountLabels] = useState([{"id": 0, "label": "baseline"}, {"id": 1, "label": "discounts_1"}, {"id": 2, "label": "discounts_2"}, {"id":3, "label": "discounts_3"}]);
 
   const [dateBefore, setDateBefore] = useState('11.09.2001')
   const [dateAfter, setDateAfter] = useState('11.09.2001')

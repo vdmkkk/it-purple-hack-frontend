@@ -51,6 +51,8 @@ export const SidePanel = ({pageState}) => {
 
   return (
     <div className='sidePannel'>
+      <div className="insidePanel">
+
             <div>
                 <img src={logo} className='logo'/>
                 <h1>Avito</h1>
@@ -87,6 +89,8 @@ export const SidePanel = ({pageState}) => {
             <div className='logout-button' onClick={handleLogout}>
                   <img src={logoutIcon}/>
                   <h3> Выйти </h3>
+            </div>
+
             </div>
         </div>
   );

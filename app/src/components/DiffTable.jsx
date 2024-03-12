@@ -15,10 +15,6 @@ function DataTable({ data }) {
               <div className='diff-input-div'>
                 <input defaultValue={item["price"]} className='passive-input'></input>
               </div>
-              
-              
-              
-
 
               <div className='note-div'>
                 <p className='note'>ред.</p>

@@ -41,7 +41,7 @@ export const TableView = () => {
 
           </div>
 
-          <div className="column-names">
+          <div className="column-names-files">
                <p>id 1</p>
                <p>id 2</p>
                <p>Цена</p>

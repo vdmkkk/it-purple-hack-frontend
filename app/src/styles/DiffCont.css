@@ -10,6 +10,7 @@
   background-color: #fff;
   transition: 0.3s ease;
   gap: 25px;
+  margin-bottom: 25px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.12);
 }
 
@@ -18,12 +19,16 @@
 }
 
 .column-names {
+  position: relative;
   display: flex;
-  padding-left: 0px;
+  padding-right: 40px;
   flex-direction: row;
-  gap: 90px;
-  /* justify-content: flex-start; */
-  
+  gap: 95px;
+  justify-content: flex-start;
+}
+
+.column-names p {
+  font-weight: 600;
 }
 
 .data-diff {
@@ -111,4 +116,84 @@
 .slider-after .number-cont-active {
   border: 2px solid #9747FF;
   color: #9747FF;
+}
+
+.bottom-options {
+  padding-left: 25px;
+  display: flex;
+  width: fit-content;
+  gap: 140px;
+  align-items: center;
+}
+
+.bottom-options p {
+  color: #343A40;
+}
+
+.choose-id-sort {
+  display: flex;
+  width: fit-content;
+  gap: 50px;
+}
+
+.changes-only-cont {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.id-form {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.checkbox-sort {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 1.6em;
+  height: 1.6em;
+  border-radius: 100px;
+  margin-right: 0.5em;
+  border: 0.15em solid #343A40;
+  outline: none;
+  cursor: pointer;
+}
+
+.checkbox-sort-active {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 1.6em;
+  height: 1.6em;
+  border-radius: 100px;
+  margin-right: 0.5em;
+  border: 6px solid #FE4153;
+  outline: none;
+  cursor: pointer;
+}
+
+.changes-checkbox {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 1.6em;
+  height: 1.6em;
+  border-radius: 4px;
+  margin-right: 0.5em;
+  border: 2px solid #343A40;
+  outline: none;
+  cursor: pointer;
+}
+
+
+.changes-checkbox-active {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 1.6em;
+  height: 1.6em;
+  border-radius: 4px;
+  margin-right: 0.5em;
+  border: 2px solid #FE4153;
+  outline: none;
+  background-color: #FE4153;
+  cursor: pointer;
 }
