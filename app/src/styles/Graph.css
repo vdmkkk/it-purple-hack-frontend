@@ -9,6 +9,8 @@
   gap: 2vw;
   flex-wrap: wrap;
   background-color: #ddd; */
+  z-index: 900;
+  position: relative;
 }
 
 .dataCard {

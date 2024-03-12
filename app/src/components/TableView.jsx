@@ -121,12 +121,14 @@ export const TableView = () => {
                     <p style={{ "paddingLeft": "50px" }}>Цена</p>
                </div>
 
-               <div className="table">
-                    {isPopUp == true ? <PopUp isPopUpShow={isPopUpShow} /> : <div></div>}
-                    <div className="data">
-                         {isPopUp == true ? <div className="blured-data"></div> : <div></div>}
-                         {tableData != null ? <DataTable data={tableData} /> : <div />}
-                    </div>
+
+          <div className="column-names-files">
+               <p>id 1</p>
+               <p>id 2</p>
+               <p>Цена</p>
+          </div>
+
+
 
                </div>
                <div className='slider-after'>
