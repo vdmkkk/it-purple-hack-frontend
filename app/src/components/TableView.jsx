@@ -34,7 +34,7 @@ export const TableView = () => {
                'Content-Type': 'application/json'
           };
           console.log(name, page);
-          await axios.get(`http://91.222.236.221:8080/matrix/get_matrix?matrix_name=${name}&page=${page}`, { headers })
+          await axios.get(`http://81.200.152.232:8080/matrix/get_matrix?matrix_name=${name}&page=${page}`, { headers })
                .then(response => {
                     if (response.status == 200) {
                          setTableData(response.data["data"]);
@@ -52,10 +52,10 @@ export const TableView = () => {
                'Accept': 'application/json',
                'Content-Type': 'application/json'
           };
-          await axios.get(`http://91.222.236.221:8080/matrix/get_matrices_by_duration?time_from=${hack}23%3A59%3A59%2B00%3A00&time_to=${rn}T23%3A59%3A59%2B00%3A00`, { headers })
+          await axios.get(`http://81.200.152.232:8080/matrix/get_matrices_by_duration?time_from=${hack}23%3A59%3A59%2B00%3A00&time_to=${rn}T23%3A59%3A59%2B00%3A00`, { headers })
                .then(response => {
                     if (response.status == 200) {
-                         console.log()
+                         // console.log(response.data);
                          setFilename(response.data.filter((item) => item["name"].includes(filename + "_")).sort((a, b) => { return new Date(b["timestamp"]) - new Date(a["timestamp"]) })[0]["name"]);
                          getMatrix(response.data.filter((item) => item["name"].includes(filename + "_")).sort((a, b) => { return new Date(b["timestamp"]) - new Date(a["timestamp"]) })[0]["name"]);
                     }
@@ -68,7 +68,10 @@ export const TableView = () => {
      useEffect(() => {
           getFiles("baseline");
           // setTableData(bruh);
-     }, []);
+     }, [page]);
+
+     // useEffect(() => {
+     // }, [page])
 
      const [maxPage, setMaxPage] = useState(-1);
 
@@ -128,9 +131,14 @@ export const TableView = () => {
                <p>Цена</p>
           </div>
 
-
-
+          <div className="table">
+               {isPopUp==true ? <PopUp isPopUpShow={isPopUpShow}/> : <div></div> }
+               <div className="data">
+                    {isPopUp==true ? <div className="blured-data"></div> : <div></div> }
+                    <DataTable data={tableData}/>
                </div>
+          </div>
+
                <div className='slider-after'>
                     <img onClick={() => minPage()} className='number-cont' src={leftDoubleArrow}></img>
                     <img onClick={() => prevPage()} className='number-cont' src={leftArrow}></img>
@@ -141,13 +149,6 @@ export const TableView = () => {
                     <img onClick={() => nextPage()} className='number-cont' src={rightArrow}></img>
                     <img onClick={() => maxPageFunc()}className='number-cont' src={rightDoubleArrow}></img>
                </div>
-               <div className="pages">
-                    <div className={page == page - (page - 1) % 4 ? "page-btn" : "page-btn-active"} onClick={() => setPage(page - (page - 1) % 4)}><p>{page - (page - 1) % 4}</p></div>
-                    <div className={page == page - (page - 1) % 4 + 1 ? "page-btn" : "page-btn-active"} onClick={() => setPage(page - (page - 1) % 4 + 1)}><p>{page - (page - 1) % 4 + 1}</p></div>
-                    <div className={page == page - (page - 1) % 4 + 2 ? "page-btn" : "page-btn-active"} onClick={() => setPage(page - (page - 1) % 4 + 2)}><p>{page - (page - 1) % 4 + 2}</p></div>
-                    <div className={page == page - (page - 1) % 4 + 3 ? "page-btn" : "page-btn-active"} onClick={() => setPage(page - (page - 1) % 4 + 3)}><p>{page - (page - 1) % 4 + 3}</p></div>
-               </div>
-
 
           </div>
      );
