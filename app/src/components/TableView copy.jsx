@@ -16,7 +16,7 @@ import rightDoubleArrow from "../assets/icons/rightDoubleArrow.svg"
 import { PopUp } from "./PopUp";
 import axios from 'axios';
 
-export const TableView = ({file}) => {
+export const TableView = () => {
 
      const hack = '2023-12-31T';
      const rn = new Date().toJSON().split("T")[0];
@@ -124,6 +124,12 @@ export const TableView = ({file}) => {
                     <p style={{ "paddingLeft": "50px" }}>Цена</p>
                </div>
 
+
+          {/* <div className="column-names-files">
+               <p>id 1</p>
+               <p>id 2</p>
+               <p>Цена</p>
+          </div> */}
 
           <div className="table">
                {isPopUp==true ? <PopUp isPopUpShow={isPopUpShow}/> : <div></div> }

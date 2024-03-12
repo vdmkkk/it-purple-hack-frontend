@@ -110,9 +110,10 @@ function AnalyticsMarket() {
 
 
 
-      <img src={greenWideLine1} className='green-wide-line-1'></img>
-      <img src={greenWideLine2} className='green-wide-line-2'></img>
-       
+
+    <img src={greenWideLine1} className='green-wide-line-1'></img>
+    <img src={greenWideLine2} className='green-wide-line-2'></img>
+    
         <SidePanel pageState="marketing_page"> </SidePanel>
 
             <div className='right-side'>
