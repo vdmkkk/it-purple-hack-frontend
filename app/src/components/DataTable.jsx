@@ -9,8 +9,8 @@ function DataTable({ data }) {
     <div>
         {data.map((item) => (
           <div className='raw'>
-              <p>{item["mc_id"]}</p>
-              <p>{item["lc_id"]}</p>
+              <p>{item["microcategory_id"]}</p>
+              <p>{item["region_id"]}</p>
 
               <div className='input-div'><input defaultValue={item["price"]}></input></div>
               
