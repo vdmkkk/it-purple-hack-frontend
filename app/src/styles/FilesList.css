@@ -19,7 +19,7 @@
 }
 
 .pink-line {
-  /* width: 104px; */
+  
   height: 2px;
   align-self: flex-start;
   border-radius: 20px;
@@ -58,5 +58,21 @@
 }
 
 .file:hover .small-file-icon {
+  opacity: .8;
+}
+
+.file-active {
+  display: flex;
+  justify-content:flex-start;
+  gap: 16px;
+  cursor: pointer;
+}
+
+.file-active .file-name {
+  transform: translate(10px);
+  color: black;
+}
+
+.file-active .small-file-icon {
   opacity: 1;
 }

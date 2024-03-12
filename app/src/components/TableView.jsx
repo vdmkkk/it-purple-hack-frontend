@@ -16,7 +16,7 @@ import rightDoubleArrow from "../assets/icons/rightDoubleArrow.svg"
 import { PopUp } from "./PopUp";
 import axios from 'axios';
 
-export const TableView = () => {
+export const TableView = ({file}) => {
 
      const hack = '2023-12-31T';
      const rn = new Date().toJSON().split("T")[0];
@@ -26,6 +26,7 @@ export const TableView = () => {
      const [isPopUp, isPopUpShow] = useState(false);
      const [page, setPage] = useState(1);
      const [filename, setFilename] = useState('');
+
 
 
      const getMatrix = async (name) => {
@@ -47,7 +48,7 @@ export const TableView = () => {
      }
 
 
-     const getFiles = async (filename) => {
+     const getFiles = async () => {
           const headers = {
                'Accept': 'application/json',
                'Content-Type': 'application/json'
@@ -56,8 +57,8 @@ export const TableView = () => {
                .then(response => {
                     if (response.status == 200) {
                          console.log()
-                         setFilename(response.data.filter((item) => item["name"].includes(filename + "_")).sort((a, b) => { return new Date(b["timestamp"]) - new Date(a["timestamp"]) })[0]["name"]);
-                         getMatrix(response.data.filter((item) => item["name"].includes(filename + "_")).sort((a, b) => { return new Date(b["timestamp"]) - new Date(a["timestamp"]) })[0]["name"]);
+                         setFilename(response.data.filter((item) => item["name"].includes(file + "_")).sort((a, b) => { return new Date(b["timestamp"]) - new Date(a["timestamp"]) })[0]["name"]);
+                         getMatrix(response.data.filter((item) => item["name"].includes(file + "_")).sort((a, b) => { return new Date(b["timestamp"]) - new Date(a["timestamp"]) })[0]["name"]);
                     }
                })
                .catch(error => {
@@ -66,7 +67,7 @@ export const TableView = () => {
      };
 
      useEffect(() => {
-          getFiles("baseline");
+          getFiles();
           // setTableData(bruh);
      }, []);
 
@@ -130,7 +131,7 @@ export const TableView = () => {
 
 
 
-               </div>
+               {/* </div> */}
                <div className='slider-after'>
                     <img onClick={() => minPage()} className='number-cont' src={leftDoubleArrow}></img>
                     <img onClick={() => prevPage()} className='number-cont' src={leftArrow}></img>
@@ -141,12 +142,12 @@ export const TableView = () => {
                     <img onClick={() => nextPage()} className='number-cont' src={rightArrow}></img>
                     <img onClick={() => maxPageFunc()}className='number-cont' src={rightDoubleArrow}></img>
                </div>
-               <div className="pages">
+               {/* <div className="pages">
                     <div className={page == page - (page - 1) % 4 ? "page-btn" : "page-btn-active"} onClick={() => setPage(page - (page - 1) % 4)}><p>{page - (page - 1) % 4}</p></div>
                     <div className={page == page - (page - 1) % 4 + 1 ? "page-btn" : "page-btn-active"} onClick={() => setPage(page - (page - 1) % 4 + 1)}><p>{page - (page - 1) % 4 + 1}</p></div>
                     <div className={page == page - (page - 1) % 4 + 2 ? "page-btn" : "page-btn-active"} onClick={() => setPage(page - (page - 1) % 4 + 2)}><p>{page - (page - 1) % 4 + 2}</p></div>
                     <div className={page == page - (page - 1) % 4 + 3 ? "page-btn" : "page-btn-active"} onClick={() => setPage(page - (page - 1) % 4 + 3)}><p>{page - (page - 1) % 4 + 3}</p></div>
-               </div>
+               </div> */}
 
 
           </div>

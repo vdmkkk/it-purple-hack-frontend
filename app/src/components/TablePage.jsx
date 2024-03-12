@@ -16,6 +16,11 @@ import loop from '../assets/icons/search.svg'
 import person from '../assets/icons/person-fill.svg'
 
 function TablePage() {
+    const [file, setFile] = useState("baseline_1");
+
+    console.log("huy",file);
+
+
     const AccountName = 'vdmk'
     return(
         <div className='table-page'>
@@ -46,8 +51,8 @@ function TablePage() {
                     </div>
 
                     <div className='components'>
-                        <FilesList/>
-                        <TableView/>
+                        <FilesList setOption={setFile} option={file}/>
+                        <TableView file={file}/>
                     </div>
                 </div>
 
