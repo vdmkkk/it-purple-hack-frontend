@@ -79,7 +79,7 @@ function DataTable({ data, changes, setChanges, deleted, setDeleted, added, setA
         </div>
         ))}
         {dataa.map((item, key) => (
-          <div className='raw-table' style={{"backgroundColor": deleted.filter((item1) => item["microcategory_id"] == item1["microcategory_id"] && item["region_id"] == item1["region_id"]).length >= 1 ? "#f7d6e6" : changes.filter((item1) => item["microcategory_id"] == item1["microcategory_id"] && item["region_id"] == item1["region_id"]).length >= 1 ? "#fff3cd"  : ""}}>
+          <div className='raw-table' style={{"backgroundColor": deleted.filter((item1) => item["microcategory_id"] == item1["microcategory_id"] && item["region_id"] == item1["region_id"]).length >= 1 ? "#f7d6e6" : changes.filter((item1) => item["microcategory_id"] == item1["microcategory_id"] && item["region_id"] == item1["region_id"]).length >= 1 ? "#FFF3CD"  : ""}}>
               <p>{item["microcategory_id"]}</p>
               <p>{item["region_id"]}</p>
 
