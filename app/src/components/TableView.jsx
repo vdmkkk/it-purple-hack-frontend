@@ -12,6 +12,7 @@ import leftDoubleArrow from "../assets/icons/leftDoubleArrow.svg"
 import leftArrow from "../assets/icons/leftArrow.svg"
 import rightArrow from "../assets/icons/rightArrow.svg"
 import rightDoubleArrow from "../assets/icons/rightDoubleArrow.svg"
+import grayPlus from "../assets/icons/grayPlus.svg"
 
 import { PopUp } from "./PopUp";
 import axios from 'axios';
@@ -20,12 +21,23 @@ export const TableView = ({file}) => {
 
      const hack = '2023-12-31T';
      const rn = new Date().toJSON().split("T")[0];
-     console.log(rn);
+     // console.log(rn);
 
      const [tableData, setTableData] = useState([]);
      const [isPopUp, isPopUpShow] = useState(false);
      const [page, setPage] = useState(1);
      const [filename, setFilename] = useState('');
+
+     const [changes, setChanges] = useState([]);
+     const [deleted, setDeleted] = useState([]);
+     const [added, setAdded] = useState([]);
+
+     
+     function handleAdd() {
+          var template = {"microcategory_id": "", "region_id": "", "price": 0, "id": added.length, "page": page};
+          setAdded(oldAdded => [...oldAdded, template]);
+          // console.log('hueta happened', added)
+     }
 
 
      const getMatrix = async (name) => {
@@ -33,12 +45,12 @@ export const TableView = ({file}) => {
                'Accept': 'application/json',
                'Content-Type': 'application/json'
           };
-          console.log(name, page);
+          // console.log(name, page);
           await axios.get(`http://81.200.152.232:8080/matrix/get_matrix?matrix_name=${name}&page=${page}`, { headers })
                .then(response => {
                     if (response.status == 200) {
                          setTableData(response.data["data"]);
-                         console.log(response.data["data"])
+                         // console.log(response.data["data"])
                     }
                })
                .catch(error => {
@@ -125,11 +137,19 @@ export const TableView = ({file}) => {
                </div>
 
 
+
+          <div className="column-names-files">
+               <p>id 1</p>
+               <p>id 2</p>
+               <p>Цена</p>
+               <img onClick={() => handleAdd()} src={grayPlus} className='add-img'></img>
+          </div>
+
           <div className="table">
                {isPopUp==true ? <PopUp isPopUpShow={isPopUpShow}/> : <div></div> }
                <div className="data">
                     {isPopUp==true ? <div className="blured-data"></div> : <div></div> }
-                    <DataTable data={tableData}/>
+                    <DataTable data={tableData} changes={changes} setChanges={setChanges} deleted={deleted} setDeleted={setDeleted} added={added} setAdded={setAdded} page={page}/>
                </div>
           </div>
 

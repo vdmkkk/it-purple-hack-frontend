@@ -181,3 +181,13 @@
   border: 2px solid #9747FF;
   color: #9747FF;
 }
+
+
+.add-img {
+  right: 10px;
+  width: 28px;
+  transition: 0.3s ease;
+  padding-inline: 1px;
+  opacity: .6;
+  margin-left: 18%;
+}
