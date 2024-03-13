@@ -1,39 +1,41 @@
 import React from 'react';
 import { useState } from 'react';
-import '../styles/ServerPage.css';
+import '../styles/ProfilePage.css';
 
 import { SidePanel } from './reusable/SidePanel';
-import { PopUp } from './PopUp';
 
-import redWideLine1 from '../assets/icons/redWideLine1.svg'
-import redWideLine2 from '../assets/icons/redWideLine2.svg'
-
-import { TopBars } from './reusable/TopBars';
+import grayWideLine from '../assets/icons/grayWideLine.svg'
 
 import loop from '../assets/icons/search.svg'
 import person from '../assets/icons/person-fill.svg'
 
-function ServerPage() {
+import { TopBars } from './reusable/TopBars';
+import { ProfileCard } from './ProfileCard';
+import { ProfileEdit } from './ProfileEdit';
+
+
+
+function ProfilePage() {
+
+
     const AccountName = 'vdmk'
-    
     return(
-        <div className='server-page'>
-                <img src={redWideLine1} className='wide-line-1'></img>
-                <img src={redWideLine2} className='wide-line-2'></img>
+        <div className='table-page'>
+                <img src={grayWideLine} className='wide-line-1'></img>
                 
-                <SidePanel pageState="server-page"> </SidePanel>
+                <SidePanel pageState=""> </SidePanel>
 
                 <div className='right-side'>
 
                     <div className='header'>
-                        <h2>СЕРВЕР</h2>
+                        <h2>ПРОФИЛЬ</h2>
                         <TopBars AccountName={AccountName}/>
                     </div>
 
                     <div className='components'>
-                        
+                       <ProfileCard AccountName={AccountName}/>
+                       <ProfileEdit/>
                     </div>
-                    {/* <PopUp/> */}
                 </div>
 
                 <div className='title-of-winners'>
@@ -45,4 +47,4 @@ function ServerPage() {
     );
 }
 
-export default ServerPage;
+export default ProfilePage;

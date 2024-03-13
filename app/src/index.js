@@ -14,6 +14,7 @@ import AnalyticsMarket from "./components/Analytics-Market";
 import TablePage from "./components/TablePage"
 import ShowDiffPage from "./components/ShowDiffPage";
 import ServerPage from "./components/ServerPage";
+import ProfilePage from "./components/ProfilePage";
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
   {
     path: "/server",
     element: <ServerPage/>
+  },
+  {
+    path: "/profile",
+    element: <ProfilePage/>
   }
 ]);
 

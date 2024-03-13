@@ -5,7 +5,9 @@ import sourceData from "../data/sourceData.json";
 import mockData from '../data/mock.json'
 import Dropdown from './reusable/Dropdown';
 import '../styles/Analytics-Market.css';
-import { SidePanel } from './SidePanel';
+import { SidePanel } from './reusable/SidePanel';
+
+import { TopBars } from './reusable/TopBars';
 
 import loop from '../assets/icons/search.svg'
 import person from '../assets/icons/person-fill.svg'
@@ -121,21 +123,7 @@ function AnalyticsMarket() {
 
                 <div className='header'>
                     <h2>МАРКЕТИНГ</h2>
-
-                    <div className='top-bars'>
-
-                        <div className='form-2'>
-                            {/* value={value}  onChange={(e) => handleClickLogin(e.target.value)}*/}
-                            <input className='search' placeholder="Поиск" />
-                            <img src={loop} />
-                        </div>
-
-                        <div className='form-2'>
-                            <div className='profile-button'><p>{AccountName}</p></div>
-                            <img src={person} />
-                        </div>
-
-                    </div>
+                    <TopBars AccountName={AccountName}/>
                 </div>
 
                 <div className="Analytics">
