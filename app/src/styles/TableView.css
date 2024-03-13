@@ -84,9 +84,9 @@
 .column-names-files {
   position: relative;
   display: flex;
-  padding-left: 60px;
+  padding-left: 36px;
   flex-direction: row;
-  gap: 27px;
+  gap: 75px;
   justify-content: flex-start;
 }
 
@@ -189,5 +189,5 @@
   transition: 0.3s ease;
   padding-inline: 1px;
   opacity: .6;
-  margin-left: 18%;
+  margin-left: 80px;
 }

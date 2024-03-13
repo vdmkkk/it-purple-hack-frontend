@@ -134,16 +134,9 @@ export const TableView = ({file}) => {
                     <p>microcategory_id</p>
                     <p>region_id</p>
                     <p style={{ "paddingLeft": "50px" }}>Цена</p>
+                    <img onClick={() => handleAdd()} src={grayPlus} className='add-img'></img>
+
                </div>
-
-
-
-          <div className="column-names-files">
-               <p>id 1</p>
-               <p>id 2</p>
-               <p>Цена</p>
-               <img onClick={() => handleAdd()} src={grayPlus} className='add-img'></img>
-          </div>
 
           <div className="table">
                {isPopUp==true ? <PopUp isPopUpShow={isPopUpShow}/> : <div></div> }
