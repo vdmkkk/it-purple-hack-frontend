@@ -35,9 +35,6 @@ export const MainGrid = () => {
     navigate('/showdiff');
   }
 
-  function handleServerPage(e) {
-    navigate('/server');
-  }
 
   function handleMainPage(e) {
     navigate('/');
@@ -77,7 +74,7 @@ export const MainGrid = () => {
               <img className='color-icon' src={red}/>
             </div>
 
-            <div className='grid-conteiner' onClick={handleServerPage}>
+            <div className='grid-conteiner' onClick={() => window.open("http://81.200.152.232:16686/search")}>
               <div className='text-conteiner'>
                   <h2>СЕРВЕР</h2>
                   <img src={blueLine}/>

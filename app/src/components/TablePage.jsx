@@ -2,12 +2,13 @@ import React from 'react';
 import { useState } from 'react';
 import '../styles/TablePage.css';
 
-import { SidePanel } from './SidePanel';
+import { SidePanel } from './reusable/SidePanel';
 import { PopUp } from './PopUp';
 
 import pinkWideLine1 from '../assets/icons/pinkWideLine1.svg'
 import pinkWideLine2 from '../assets/icons/pinkWideLine2.svg'
 
+import { TopBars } from './reusable/TopBars';
 
 import { FilesList } from './FilesList';
 import { TableView } from './TableView';
@@ -33,21 +34,7 @@ function TablePage() {
 
                     <div className='header'>
                         <h2>ФАЙЛЫ</h2>
-                        
-                        <div className='top-bars'>
-                            
-                              <div className='form-2'>
-                                    {/* value={value}  onChange={(e) => handleClickLogin(e.target.value)}*/}
-                                    <input  className='search' placeholder="Поиск"/>
-                                    <img src={loop}/>
-                              </div>
-
-                              <div className='form-2'>
-                                    <div className='profile-button'><p>{AccountName}</p></div>
-                                    <img src={person}/>
-                              </div>
-                              
-                        </div>
+                        <TopBars AccountName={AccountName}/>
                     </div>
 
                     <div className='components'>
