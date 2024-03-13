@@ -108,14 +108,12 @@ function AnalyticsMarket() {
     return (
         <div className="App">
 
-            <img src={wideLine} className='wide-line'></img>
-
-            <SidePanel pageState="marketing_page"> </SidePanel>
 
 
-      <img src={greenWideLine1} className='green-wide-line-1'></img>
-      <img src={greenWideLine2} className='green-wide-line-2'></img>
-       
+
+    <img src={greenWideLine1} className='green-wide-line-1'></img>
+    <img src={greenWideLine2} className='green-wide-line-2'></img>
+    
         <SidePanel pageState="marketing_page"> </SidePanel>
 
             <div className='right-side'>

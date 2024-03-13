@@ -1,18 +1,26 @@
-.raw {
+.raw-table, .raw-table-added {
   position: relative;
   border: 0.5px solid #CCBED4;
   color: #718096;
   display: flex;
-  width: 90%;
+  width: 99%;
   height: 31px;
   display: flex;
-  /* justify-content: space-between; */
-  padding-inline: 5%;
+  justify-content: space-between;
+  /* padding-inline: 5%; */
+  padding-left: 5%;
+  padding-right: 5%;
   align-items: center;
+  
   /* overflow: scroll; */
 }
 
-.raw p {
+.raw-table-added {
+  padding-left: 3%;
+  width: 101%;
+}
+
+.raw-table p, .raw-table-added p {
   width: 150px;
 }
 
@@ -24,6 +32,14 @@
   width: 100px;
 }
 
+.input-div-added {
+  width: 145px;
+}
+
+.new-input {
+  padding-left: 3%;
+}
+
 .icons-div {
   width: 80px;
   padding-inline: 5px;
@@ -32,18 +48,20 @@
   gap: 5px;
 }
 
-.raw:hover {
+.raw-table:hover {
   background-color: #F4EFF6;
 }
 
-.raw input {
+.raw-table input, .raw-table-added input {
   width: 50px;
   border-radius: 6px;
   border: 1px solid #CCBED4;
   transition: 0.3s ease;
+  /* text-decoration: none ; */
 }
 
-.raw input:focus {
+
+.raw-table input:focus, .raw-table-added input:focus {
   width: 80px;
   outline-color: #965FEA;
 }
@@ -58,4 +76,15 @@
 
 .crosses-img:hover {
   opacity: 1;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }

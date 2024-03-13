@@ -12,6 +12,7 @@ import leftDoubleArrow from "../assets/icons/leftDoubleArrow.svg"
 import leftArrow from "../assets/icons/leftArrow.svg"
 import rightArrow from "../assets/icons/rightArrow.svg"
 import rightDoubleArrow from "../assets/icons/rightDoubleArrow.svg"
+import grayPlus from "../assets/icons/grayPlus.svg"
 
 import { PopUp } from "./PopUp";
 import axios from 'axios';
@@ -20,12 +21,23 @@ export const TableView = () => {
 
      const hack = '2023-12-31T';
      const rn = new Date().toJSON().split("T")[0];
-     console.log(rn);
+     // console.log(rn);
 
      const [tableData, setTableData] = useState([]);
      const [isPopUp, isPopUpShow] = useState(false);
      const [page, setPage] = useState(1);
      const [filename, setFilename] = useState('');
+
+     const [changes, setChanges] = useState([]);
+     const [deleted, setDeleted] = useState([]);
+     const [added, setAdded] = useState([]);
+
+     
+     function handleAdd() {
+          var template = {"microcategory_id": "", "region_id": "", "price": 0, "id": added.length, "page": page};
+          setAdded(oldAdded => [...oldAdded, template]);
+          // console.log('hueta happened', added)
+     }
 
 
      const getMatrix = async (name) => {
@@ -33,12 +45,12 @@ export const TableView = () => {
                'Accept': 'application/json',
                'Content-Type': 'application/json'
           };
-          console.log(name, page);
-          await axios.get(`http://91.222.236.221:8080/matrix/get_matrix?matrix_name=${name}&page=${page}`, { headers })
+          // console.log(name, page);
+          await axios.get(`http://81.200.152.232:8080/matrix/get_matrix?matrix_name=${name}&page=${page}`, { headers })
                .then(response => {
                     if (response.status == 200) {
                          setTableData(response.data["data"]);
-                         console.log(response.data["data"])
+                         // console.log(response.data["data"])
                     }
                })
                .catch(error => {
@@ -52,10 +64,10 @@ export const TableView = () => {
                'Accept': 'application/json',
                'Content-Type': 'application/json'
           };
-          await axios.get(`http://91.222.236.221:8080/matrix/get_matrices_by_duration?time_from=${hack}23%3A59%3A59%2B00%3A00&time_to=${rn}T23%3A59%3A59%2B00%3A00`, { headers })
+          await axios.get(`http://81.200.152.232:8080/matrix/get_matrices_by_duration?time_from=${hack}23%3A59%3A59%2B00%3A00&time_to=${rn}T23%3A59%3A59%2B00%3A00`, { headers })
                .then(response => {
                     if (response.status == 200) {
-                         console.log()
+                         // console.log(response.data);
                          setFilename(response.data.filter((item) => item["name"].includes(filename + "_")).sort((a, b) => { return new Date(b["timestamp"]) - new Date(a["timestamp"]) })[0]["name"]);
                          getMatrix(response.data.filter((item) => item["name"].includes(filename + "_")).sort((a, b) => { return new Date(b["timestamp"]) - new Date(a["timestamp"]) })[0]["name"]);
                     }
@@ -68,7 +80,10 @@ export const TableView = () => {
      useEffect(() => {
           getFiles("baseline");
           // setTableData(bruh);
-     }, []);
+     }, [page]);
+
+     // useEffect(() => {
+     // }, [page])
 
      const [maxPage, setMaxPage] = useState(-1);
 
@@ -126,11 +141,16 @@ export const TableView = () => {
                <p>id 1</p>
                <p>id 2</p>
                <p>Цена</p>
+               <img onClick={() => handleAdd()} src={grayPlus} className='add-img'></img>
+          </div>
+          <div className="table">
+               {isPopUp==true ? <PopUp isPopUpShow={isPopUpShow}/> : <div></div> }
+               <div className="data">
+                    {isPopUp==true ? <div className="blured-data"></div> : <div></div> }
+                    <DataTable data={tableData} changes={changes} setChanges={setChanges} deleted={deleted} setDeleted={setDeleted} added={added} setAdded={setAdded} page={page}/>
+               </div>
           </div>
 
-
-
-               </div>
                <div className='slider-after'>
                     <img onClick={() => minPage()} className='number-cont' src={leftDoubleArrow}></img>
                     <img onClick={() => prevPage()} className='number-cont' src={leftArrow}></img>
@@ -141,13 +161,6 @@ export const TableView = () => {
                     <img onClick={() => nextPage()} className='number-cont' src={rightArrow}></img>
                     <img onClick={() => maxPageFunc()}className='number-cont' src={rightDoubleArrow}></img>
                </div>
-               <div className="pages">
-                    <div className={page == page - (page - 1) % 4 ? "page-btn" : "page-btn-active"} onClick={() => setPage(page - (page - 1) % 4)}><p>{page - (page - 1) % 4}</p></div>
-                    <div className={page == page - (page - 1) % 4 + 1 ? "page-btn" : "page-btn-active"} onClick={() => setPage(page - (page - 1) % 4 + 1)}><p>{page - (page - 1) % 4 + 1}</p></div>
-                    <div className={page == page - (page - 1) % 4 + 2 ? "page-btn" : "page-btn-active"} onClick={() => setPage(page - (page - 1) % 4 + 2)}><p>{page - (page - 1) % 4 + 2}</p></div>
-                    <div className={page == page - (page - 1) % 4 + 3 ? "page-btn" : "page-btn-active"} onClick={() => setPage(page - (page - 1) % 4 + 3)}><p>{page - (page - 1) % 4 + 3}</p></div>
-               </div>
-
 
           </div>
      );
