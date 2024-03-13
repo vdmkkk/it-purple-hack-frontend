@@ -128,7 +128,20 @@
 }
 
 .logout-button:hover h3 {
-  color: #7f7f7f;
-  font-weight: 500;
+  color: #FE4153;
+  /* font-weight: 500; */
   transform: translate(10px);
+}
+
+.image-topic {
+  opacity: 0.4;
+  transition: 0.3s ease;
+}
+
+.dark-image-topic {
+  opacity: 1;
+}
+
+.topic:hover .image-topic {
+  opacity: 0.7;
 }
