@@ -77,8 +77,14 @@
     color: #000;
     font-weight: bold;
     border-left: 4px solid #000;
+    z-index: 1000;
 }
 
 svg {
     margin-right: 8px;
+}
+
+.for-z-index {
+    position: relative;
+    z-index: 10000;
 }
