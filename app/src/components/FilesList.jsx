@@ -19,6 +19,9 @@ export const FilesList = ({ option, setOption, labels }) => {
 
      labels = labels.map((item) => { return item.split("_")[0] }).filter((item, index, array) => { return array.findIndex(i => i === item) === index })
 
+     function handleAddFile(filename) {
+
+     }
 
      return (
           <div className='files-list'>
@@ -45,7 +48,7 @@ export const FilesList = ({ option, setOption, labels }) => {
         <div className="all-files">
           <img src={pinkLine} className="pink-line" />
                <div className="file">
-                    <img onClick={() => handleAddFile(newFileName)} src={plus} className="add-file-icon" />
+                    <img onClick={() => handleAddFile()} src={plus} className="add-file-icon" />
                     {/* <input className="add-input" placeholder="Введите имя файла" onChange={(e) => setNewFileName(e.target.value)}></input> */}
                     {/* <img src={plus} style={{transform: "translate(-10px)"}} /> */}
                </div>

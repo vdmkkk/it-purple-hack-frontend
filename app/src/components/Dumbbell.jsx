@@ -12,41 +12,13 @@ import { createRoutesFromChildren } from "react-router-dom";
 HC_more(Highcharts);
 highchartsDumbbell(Highcharts);
 
-var olddata = [
-  {
-    name: "Slovenia",
-    low: 69,
-    high: 81
-  },
-  {
-    name: "Sweden",
-    low: 73,
-    high: 82
-  },
-  {
-    name: "Hungary",
-    low: 68,
-    high: 76
-  },
-  {
-    name: "Italy",
-    low: 69,
-    high: 83
-  },
-  {
-    name: "UK",
-    low: 71,
-    high: 81
-  }
-];
-
 
 function getData (mockData, setChartOptions) {
   
     var newData = [{
       name: mockData[0]["changes"][0]["price"],
-      low: mockData[0]["changes"][0]["time"],
-      high:  mockData[0]["changes"][1]["time"]
+      low: new Date(mockData[0]["changes"][0]["time"]).toJSON(),
+      high:  new Date(mockData[0]["changes"][1]["time"]).toJSON()
     }]
 
     
@@ -72,11 +44,11 @@ function getData (mockData, setChartOptions) {
       },
   
       subtitle: {
-        text: "1960 vs 2018"
+        text: ""
       },
   
       title: {
-        text: "Analys"
+        text: "Изменение цен"
       },
   
       tooltip: {
@@ -95,8 +67,9 @@ function getData (mockData, setChartOptions) {
   
       series: [
         {
-          name: "Life expectancy change",
-          data: newData
+          // name: "Изменение цен",
+          data: newData,
+          color: "#F00"
         }
       ]
     })
@@ -144,12 +117,13 @@ function LineChart({mockData, metadata, type}) {
     },
 
     xAxis: {
-      type: "category"
+      type: "time",
+      breaks: newdata.map(item => item["low"])
     },
 
     yAxis: {
       title: {
-        text: "Price changing (rubles)"
+        // text: "Price changing (rubles)"
       }
     },
 
