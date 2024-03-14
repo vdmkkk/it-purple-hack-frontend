@@ -134,18 +134,24 @@ function countEntriesByDay(data, key="none") {
 }
 
 function getConversion(data) {
-  var data_int = countEntriesByDay(data.filter((item) => !item["is_order"]), data.filter((item) => item["is_order"]));
-  var data_ord = countEntriesByDay(data.filter((item) => item["is_order"]), data.filter((item) => !item["is_order"]));
-  var finalData = [];
-  // console.log(data_int, data_ord)
-  // if ()
-  for (let i = 0; i < data_int.length; i++) {
-    // console.log(data_int[i], data_ord[i])
-    finalData.push([data_int[i][0], data_ord[i][1] / data_int[i][1]]);
+  try {
+    var data_int = countEntriesByDay(data.filter((item) => !item["is_order"]), data.filter((item) => item["is_order"]));
+    var data_ord = countEntriesByDay(data.filter((item) => item["is_order"]), data.filter((item) => !item["is_order"]));
+    var finalData = [];
+    // console.log(data_int, data_ord)
+    // if ()
+    for (let i = 0; i < data_int.length; i++) {
+      // console.log(data_int[i], data_ord[i])
+      finalData.push([data_int[i][0], data_ord[i][1] / data_int[i][1]]);
+    }
+    // console.log('halo')
+    // console.log(finalData);
+    return finalData;
   }
-  // console.log('halo')
-  // console.log(finalData);
-  return finalData;
+  catch {
+    return data;
+  }
+  
 }
 
 

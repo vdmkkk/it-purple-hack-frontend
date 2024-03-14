@@ -26,17 +26,39 @@ export const PopUp = ({isPopUpShow, filename, updated, added, deleted, parent_na
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         };
+        let newUpdated = [];
+        for (let i = 0; i < updated.length; i++){
+            newUpdated.push({"microcategory_id": updated[i]["microcategory_id"], "region_id": updated[i]["region_id"],"price": parseInt(updated[i]["newPrice"])})
+        }
+        // console.log("pop", deleted)
         var data = {
-            "updated": updated,
-            "added": added,
-            "deleted": deleted,
+            // "updated": newUpdated,
+            // "added": added,
+            // "deleted": deleted,
+            "updated": newUpdated,
+            "added": [
+                {
+                  "microcategory_id": 0,
+                  "price": 0,
+                  "region_id": 0
+                }
+              ],
+              "deleted": [
+                {
+                  "microcategory_id": 0,
+                  "price": 0,
+                  "region_id": 0
+                }
+              ],
             "parent_name": parent_name,
             "new_name": file,
-            'is_baseline': file == 'baseline' 
+            'is_baseline': file == 'baseline'
         }
-        await axios.post(`http://45.8.99.29:8080/matrix/create`, data, { headers })
+        console.log('pop', JSON.stringify(data));
+        await axios.post(`http://45.8.99.29:8080/matrix/create`, JSON.stringify(data), { headers })
             .then(response => {
                 if (response.status == 200) {
+                    console.log("YES", response.data)
                     handleYes();
                 }
             })
@@ -62,7 +84,7 @@ export const PopUp = ({isPopUpShow, filename, updated, added, deleted, parent_na
 
         <div className="buttons">
 
-            <div className="yes-button" onClick={handleYes}>
+            <div className="yes-button" onClick={() => setStorage()}>
                 <p>Да</p>
             </div>
 
