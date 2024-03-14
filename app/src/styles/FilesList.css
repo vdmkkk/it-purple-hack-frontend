@@ -20,7 +20,8 @@
 
 .pink-line {
   
-  height: 2px;
+  height: 3px;
+  /* width: 100px; */
   align-self: flex-start;
   border-radius: 20px;
   margin-left: 5px;
@@ -75,4 +76,37 @@
 
 .file-active .small-file-icon {
   opacity: 1;
+}
+
+.add-input {
+  border-radius: 8px;
+  padding-left: 5px;
+  width: 150px;
+  outline: none;
+  border: 1px solid gray;
+  transition: 0.3s ease;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.12);
+}
+
+.add-input:hover {
+  box-shadow: 3px 7px 20px rgba(0, 0, 0, 0.25);
+}
+
+.add-input::placeholder {
+  padding-left: 3px;
+}
+
+.add-input:focus {
+  border: 1px solid purple;
+}
+
+.add-file-icon {
+  opacity: 0.5;
+  padding-left: 100px;
+  width: 35px;
+  transition: 0.3s ease;
+}
+
+.add-file-icon:hover {
+  opacity: 0.8;
 }

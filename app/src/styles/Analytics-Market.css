@@ -39,7 +39,6 @@
     }
 }
 
-.dropdown, .dropdown-active {}
 
 .dropdown {
     animation: fadeOut 0.2s ease-in-out forwards;

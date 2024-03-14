@@ -47,6 +47,8 @@ const options = {
   },
   plugins: {
     title: {
+      display: true,
+      text: 'SALUT! Analitics',
     },
   },
 };
@@ -171,10 +173,12 @@ const primaryColors = [
 ]
 
 export const Graph = ({mockData, metadata, type}) => {
+  
 
   const [data, setData] = useState(mockData);
 
   useEffect(() => {
+    options.plugins.title.text = type.label
     if (type.label == "Конверсия") {
       setData(getConversion(mockData));
     } else setData(mockData);

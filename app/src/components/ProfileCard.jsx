@@ -42,7 +42,7 @@ export const ProfileCard = ({AccountName}) => {
 
                     <div className="profile-raw">
                       <p className="profile-chart">Дата рождения</p>
-                      <p>11.09.2001, 14 лет</p>
+                      <p>12.08.2006, 17 лет</p>
                     </div>
 
                     <div className="profile-raw">

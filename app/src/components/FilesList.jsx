@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import "../styles/FilesList.css";
 import pinkLine from "../assets/icons/pinkLine.svg"
 import smallFile from "../assets/icons/smallFileDark.svg"
+import plus from "../assets/icons/grayPlus.svg"
 
 export const FilesList = ({ option, setOption, labels }) => {
 
@@ -17,7 +18,6 @@ export const FilesList = ({ option, setOption, labels }) => {
      // ]
 
      labels = labels.map((item) => { return item.split("_")[0] }).filter((item, index, array) => { return array.findIndex(i => i === item) === index })
-
 
 
      return (
@@ -42,6 +42,17 @@ export const FilesList = ({ option, setOption, labels }) => {
                               </div>
                          </div>
                ))}
+        <div className="all-files">
+          <img src={pinkLine} className="pink-line" />
+               <div className="file">
+                    <img onClick={() => handleAddFile(newFileName)} src={plus} className="add-file-icon" />
+                    {/* <input className="add-input" placeholder="Введите имя файла" onChange={(e) => setNewFileName(e.target.value)}></input> */}
+                    {/* <img src={plus} style={{transform: "translate(-10px)"}} /> */}
+               </div>
+          </div> 
+          
+
+           
 
 
 
