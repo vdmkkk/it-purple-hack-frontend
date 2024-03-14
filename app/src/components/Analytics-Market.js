@@ -2,7 +2,7 @@ import { Graph } from './Graph';
 import { useState, useEffect, useMemo } from 'react';
 
 import sourceData from "../data/sourceData.json";
-import mockData from '../data/mock-timeline.json'
+import mockData from '../data/mock1.json'
 import mockTimeline from "../data/mock-timeline.json"
 import Dropdown from './reusable/Dropdown';
 import '../styles/Analytics-Market.css';
@@ -23,8 +23,7 @@ function AnalyticsMarket() {
     const headerLabels = [
         { "id": 0, "label": 'Запросы цены' },
         { "id": 1, "label": "Создание объявлений" },
-        { "id": 2, "label": "Конверсия" },
-        { "id": 3, "label": 'Тенденция цен' }
+        { "id": 2, "label": "Конверсия" }
     ];
     const [header, setHeader] = useState(headerLabels[0]);
     const [discountMeta, setDiscountMeta] = useState({ "id": 0, "label": "Общее" })
@@ -45,7 +44,8 @@ function AnalyticsMarket() {
 
     const [isOpen, setIsOpen] = useState(-1);
 
-    const [data, setData] = useState(mockTimeline);
+    const [data, setData] = useState(mockData);
+    const [timeData, setTimeData] = useState(mockTimeline);
     // const [dataTimeline, setDataTimeline] = useState(mockTimeline);
 
 
@@ -69,36 +69,39 @@ function AnalyticsMarket() {
 
 
     useEffect(() => {
-        // var newData = mockData;
-        // if (discountMeta.label == "Выбрать") {
-        //     console.log(parseInt(discount.label));
-        //     newData = newData.filter((item) => item["discount_id"] == parseInt(discount.label));
-        // }
-        // if (regionMeta.label == "Выбрать") {
-        //     newData = newData.filter((item) => item["region_id"] == parseInt(region.label));
-        // }
-        // if (microcategoryMeta.label == "Выбрать") {
-        //     newData = newData.filter((item) => item["microcategory_id"] == parseInt(microcategory.label));
-        // }
-        if (header.label == 'Запросы цены') {
-            setData(applyDiscount(applyMicrocategory(applyRegion(mockData))).filter((item) => (!item["is_order"])));
-            // setMetadataForGraph("")
-        } else if (header.label == 'Создание объявлений') {
-            setData(applyDiscount(applyMicrocategory(applyRegion(mockData))).filter((item) => (item["is_order"])));
-            // setMetadataForGraph("")
-        } else if (header.label == 'Конверсия') {
-            console.log("??")
-            setData(applyDiscount(applyMicrocategory(applyRegion(mockData))));
-        } else if (header.label == 'Тенденция цен') {
-            setData(applyDiscount(applyMicrocategory(applyRegion(mockData))));
-            // setMetadataForGraph("");
+        try {
+            if (header.label == 'Запросы цены') {
+                setData(applyDiscount(applyMicrocategory(applyRegion(mockData))).filter((item) => (!item["is_order"])));
+                setTimeData(applyDiscount(applyMicrocategory(applyRegion(mockTimeline))).filter((item) => (!item["is_order"])));
+                // setMetadataForGraph("")
+            } else if (header.label == 'Создание объявлений') {
+                setData(applyDiscount(applyMicrocategory(applyRegion(mockData))).filter((item) => (item["is_order"])));
+                setTimeData(applyDiscount(applyMicrocategory(applyRegion(mockTimeline))).filter((item) => (item["is_order"])));
+                // setMetadataForGraph("")
+            } else if (header.label == 'Конверсия') {
+                console.log("??")
+                setData(applyDiscount(applyMicrocategory(applyRegion(mockData))));
+                setTimeData(applyDiscount(applyMicrocategory(applyRegion(mockTimeline))));
+            } else if (header.label == 'Тенденция цен') {
+                setData(applyDiscount(applyMicrocategory(applyRegion(mockData))));
+                setTimeData(applyDiscount(applyMicrocategory(applyRegion(mockTimeline))));
+                // setMetadataForGraph("");
+            }
+        } catch {
+
         }
+        
 
         // setData();
-
-        setDiscountLabels(applyMicrocategory(applyRegion(mockData)).map(item => item["discount_id"]).filter((value, index, self) => self.indexOf(value) === index).sort((a, b) => a - b).map((option, key) => ({ id: key, label: option })));
-        setMicrocategoryLabels(applyDiscount(applyRegion(mockData)).map(item => item["microcategory_id"]).filter((value, index, self) => self.indexOf(value) === index).sort((a, b) => a - b).map((option, key) => ({ id: key, label: option })));
-        setRegionLabels(applyMicrocategory(applyDiscount(mockData)).map(item => item["region_id"]).filter((value, index, self) => self.indexOf(value) === index).sort((a, b) => a - b).map((option, key) => ({ id: key, label: option })));
+        try {
+            setDiscountLabels(applyMicrocategory(applyRegion(mockData)).map(item => item["discount_id"]).filter((value, index, self) => self.indexOf(value) === index).sort((a, b) => a - b).map((option, key) => ({ id: key, label: option })));
+        } catch {}
+        try {
+            setMicrocategoryLabels(applyDiscount(applyRegion(mockData)).map(item => item["microcategory_id"]).filter((value, index, self) => self.indexOf(value) === index).sort((a, b) => a - b).map((option, key) => ({ id: key, label: option })));
+        }catch {}
+        try {
+            setRegionLabels(applyMicrocategory(applyDiscount(mockData)).map(item => item["region_id"]).filter((value, index, self) => self.indexOf(value) === index).sort((a, b) => a - b).map((option, key) => ({ id: key, label: option })));
+        }catch {}
         
 
         // console.log(data);
@@ -108,7 +111,6 @@ function AnalyticsMarket() {
         setMetadataForDumbbell(microcategoryMeta.label == "Выбрать" ? "microcategory_id" : regionMeta.label == "Выбрать" ? "region_id" : discountMeta.label == "Выбрать" ? "discount_id" : "");
 
     }, [discount, region, microcategory, discountMeta, regionMeta, microcategoryMeta, header]);
-
 
     return (
         <div className="App">
@@ -148,11 +150,11 @@ function AnalyticsMarket() {
                             </div>
                         </div>
                     </div>
-                    {/* <Graph mockData={data} metadata={metadataForGraph} type={header}></Graph> */}
+                    <Graph mockData={data} metadata={metadataForGraph} type={header}></Graph>
                     <div className='dumb-bell-cont'>
 
                     </div>
-                    <LineChart mockData={data} metadata={metadataForDumbbell} type={header}/>
+                    <LineChart mockData={[discountMeta.label, regionMeta.label, microcategoryMeta.label].reduce((acc, val) => (acc[val] = (acc[val] || 0) + 1, acc), {})["Выбрать"] == 2 ? [timeData.sort((a, b) => {return b["changes"].length - a["changes"].length})[0]] : timeData} metadata={metadataForDumbbell} type={header}/>
                 </div>
 
             </div>

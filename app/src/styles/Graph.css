@@ -11,6 +11,7 @@
   background-color: #ddd; */
   z-index: 900;
   position: relative;
+  margin-top: 20px;
 }
 
 .dataCard {
