@@ -5,39 +5,38 @@ import Dropdown from './reusable/Dropdown';
 import selectarrow from "../assets/icons/selectarrow.svg"
 
 
-function ChooseTable() {
+function ChooseTable({filename1, setFilename1, filename2, setFilename2, version1, setVersion1, version2, setVersion2, isOpen, setIsOpen, labels1, labels2, labels3}) {
 
-  const [discount, setDiscount] = useState({"id": 0, "label": "baseline"}, {"id": 1, "label": "discounts_1"}, {"id": 2, "label": "discounts_2"}, {"id":3, "label": "discounts_3"});
-  const [isOpen, setIsOpen] = useState(-1);
-  const [discountLabels, setDiscountLabels] = useState([{"id": 0, "label": "baseline"}, {"id": 1, "label": "discounts_1"}, {"id": 2, "label": "discounts_2"}, {"id":3, "label": "discounts_3"}]);
 
   const [dateBefore, setDateBefore] = useState('11.09.2001')
   const [dateAfter, setDateAfter] = useState('11.09.2001')
+
+  console.log('check', filename1, filename2, version1, version2)
 
 
   return (
     <div className='choose-table-cont'>
        <div className='head-line'>
         <p className='change-label'>Редактирование таблицы</p>
-        <Dropdown id={1} label={"Выберите таблицу"} selectedOption={discount} setSelectedOption={setDiscount} isOpen={isOpen} setIsOpen={setIsOpen} labels={discountLabels} />
+        <Dropdown id={1} label={"Выберите таблицу"} selectedOption={filename1} setSelectedOption={setFilename1} isOpen={isOpen} setIsOpen={setIsOpen} labels={labels1} />
+        <Dropdown id={2} label={"Выберите таблицу"} selectedOption={filename2} setSelectedOption={setFilename2} isOpen={isOpen} setIsOpen={setIsOpen} labels={labels1} />
         <div className='change-button'><p>Изменить таблицу</p></div>
        </div>
+       
 
        <div className='bottom-cont'>
             <div className='date-choose-form'>
                 <div className='arrow-with-label'>
-                    <p className='upper-label'><strong>Состояние на </strong>{dateBefore}</p>
-                    <img src={selectarrow} />
+                    <p className='upper-label'><strong>Состояние на </strong></p>
+                    <Dropdown id={3} label={"Выберите таблицу"} selectedOption={version1} setSelectedOption={setVersion1} isOpen={isOpen} setIsOpen={setIsOpen} labels={labels2} />
                 </div>
-                <p className='bottom-label'>до редактирования</p>
             </div>
 
             <div className='date-choose-form'>
               <div className='arrow-with-label'>
-                  <p className='upper-label'><strong>Состояние на </strong>{dateAfter}</p>
-                  <img src={selectarrow} />
+                  <p className='upper-label'><strong>Состояние на </strong></p>
+                  <Dropdown id={4} label={"Выберите таблицу"} selectedOption={version2} setSelectedOption={setVersion2} isOpen={isOpen} setIsOpen={setIsOpen} labels={labels3} />
               </div>
-                <p className='bottom-label'>после редактирования</p>
             </div>
 
        </div>

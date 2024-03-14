@@ -57,6 +57,7 @@
   border-radius: 6px;
   border: 1px solid #CCBED4;
   transition: 0.3s ease;
+  
   /* text-decoration: none ; */
 }
 
@@ -87,4 +88,13 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type=number] {
   -moz-appearance: textfield;
+}
+
+
+.data-input {
+  -moz-appearance: textfield;
+}
+
+.data-input::-webkit-inner-spin-button {
+display: none;
 }

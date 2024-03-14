@@ -15,7 +15,7 @@
   top:0;
   display: flex;
   justify-content: space-between;
-  padding: 25px 55px 5px 5px;
+  padding: 25px 55px 5px 0px;
   gap: 20%;
   z-index: 2;
 }
@@ -45,7 +45,7 @@
 }
 
 .right-side {
-  padding-right: 25px;
+  padding-right: 0px;
   width: 100%;
 }
 

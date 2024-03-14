@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import '../styles/ServerPage.css';
+// import '../styles/ServerPage.css';
 
 import { SidePanel } from './reusable/SidePanel';
 import { PopUp } from './PopUp';
