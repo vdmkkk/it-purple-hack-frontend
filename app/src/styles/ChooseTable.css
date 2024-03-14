@@ -8,7 +8,7 @@
   border-radius: 20px;
   background-color: #fff;
   transition: 0.3s ease;
-  gap: 25px;
+  /* gap: 25px; */
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.12);
 }
 
@@ -23,6 +23,7 @@
   /* justify-content: space-around; */
   gap:100px;
   align-items: center;
+  padding-right: 63px
 }
 
 .change-label {
@@ -34,7 +35,7 @@
 .change-button {
   position: relative;
   cursor: pointer;
-  width: 172px;
+  width: 417px;
   height: 38px;
   align-items: center;
   justify-content: center;
@@ -42,6 +43,7 @@
   background-color: #DC3545;
   border-radius: 6px;
   transition: 0.3s ease;
+  justify-content: center;
   color:white;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.12);
 }
@@ -53,6 +55,7 @@
 .change-button p {
   font-size: 16px;
   font-weight: 600;
+  
 }
 
 .bottom-cont {
@@ -66,6 +69,8 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  gap: 10px;
+  align-items: flex-end;
 }
 
 .date-choose-form p {
@@ -84,5 +89,6 @@
 
 .arrow-with-label {
   display: flex;
-  gap: 5px;
+  gap: 10px;
+  align-items: center;
 }

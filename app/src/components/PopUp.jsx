@@ -56,8 +56,8 @@ export const PopUp = ({isPopUpShow, filename, updated, added, deleted, parent_na
         </div>
 
         <div>
-            <p>Название файла</p>
-            <input value={file} onChange={(e) => setFile(e.target.value)}/>
+            <p className="label-text">Название файла</p>
+            <input className="input-pop-up" value={file} onChange={(e) => setFile(e.target.value)}/>
         </div>
 
         <div className="buttons">
