@@ -19,7 +19,7 @@ export const FilesList = ({ option, setOption, labels }) => {
 
      labels = labels.map((item) => { return item.split("_")[0] }).filter((item, index, array) => { return array.findIndex(i => i === item) === index })
 
-     function handleAddFile(filename) {
+     function handleAddFile() {
 
      }
 

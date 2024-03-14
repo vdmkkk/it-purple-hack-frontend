@@ -137,23 +137,23 @@ function TablePage() {
 
                 <div className='storage-container'>
                     <div>
-                        <div className='saving-button' onClick={() => getStorage()}>
+                        <div className='saving-button' style={{width: "170px", display:"flex", justifyContent:"center"}} onClick={() => getStorage()}>
                             Обновить данные
                         </div>
-                        <p>{storageString}</p>
+                        <p className='appear-text'>{storageString}</p>
                     </div>
-                    <div>
+                    <div className='two-buttons'>
                         <div>
                             <div onClick={() => setStorage()} className='saving-button'>
                                 Отправить данные
                             </div>
-                            <p>{storageStatus}</p>
+                            <p className='appear-text'>{storageStatus}</p>
                         </div>
                         <div>
                             <div onClick={() => storageString != 'Storage не установлен' ? switchStorage() : setSwitchStatus('Нет данных на сервере.')} className='saving-button'>
                                 Применить изменения
                             </div>
-                            <p>{switchStatus}</p>
+                            <p className='appear-text'>{switchStatus}</p>
                         </div>
                     </div>
                     
