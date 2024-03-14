@@ -13,7 +13,6 @@
   flex-direction: column;
   margin-bottom: 25px;
   gap: 5px;
-
 }
 
 .table-conteiner:hover {
@@ -112,13 +111,15 @@
 }
 
 .blured-data {
-  position: absolute;
-  width: 632px;
-  height: 636px;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
   border-radius: 20px;
   background-color: #FBF9FC;
   /* border: 2px solid #9747FF; */
-  overflow: scroll;
+  overflow: hidden;
   z-index: 999;
   opacity: 0.7;
 }

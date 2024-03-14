@@ -1,51 +1,53 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 
 import "../styles/FilesList.css";
 import pinkLine from "../assets/icons/pinkLine.svg"
 import smallFile from "../assets/icons/smallFileDark.svg"
 
-export const FilesList = ({option, setOption}) => {
+export const FilesList = ({ option, setOption, labels }) => {
 
-     const list = [
-          "baseline_1", 
-          "discounts_1", 
-          "discounts_2", 
-          "discounts_3", 
-          "discounts_4", 
-          "discounts_5", 
-          "discounts_6"
-     ]
+     // const list = [
+     //      "baseline_1", 
+     //      "discounts_1", 
+     //      "discounts_2", 
+     //      "discounts_3", 
+     //      "discounts_4", 
+     //      "discounts_5", 
+     //      "discounts_6"
+     // ]
+
+     labels = labels.map((item) => { return item.split("_")[0] }).filter((item, index, array) => { return array.findIndex(i => i === item) === index })
 
 
 
-  return (
-    <div className='files-list'>
+     return (
+          <div className='files-list'>
 
-     {list.map((file_name) => (
+               {labels.map((file_name) => (
 
-          file_name == "discounts_1" ?  
+                    file_name == "discounts_1" ?
 
-          <div className="all-files">
-               <img src={pinkLine} className="pink-line" />
-               <div onClick={() => setOption(file_name)} className={file_name==option ? "file-active" : "file"}>
-                    <img src={smallFile} className="small-file-icon" />
-                    <p className="file-name">{file_name}</p>
-               </div>
-          </div> 
-     :    
-          <div className="all-files">
-               <div onClick={() => setOption(file_name)} className={file_name==option ? "file-active" : "file"}>
-                    <img src={smallFile} className="small-file-icon" />
-                    <p className="file-name">{file_name}</p>
-               </div>
-          </div>
-     ))}
+                         <div className="all-files">
+                              <img src={pinkLine} className="pink-line" />
+                              <div onClick={() => setOption(file_name)} className={file_name == option ? "file-active" : "file"}>
+                                   <img src={smallFile} className="small-file-icon" />
+                                   <p className="file-name">{file_name}</p>
+                              </div>
+                         </div>
+                         :
+                         <div className="all-files">
+                              <div onClick={() => setOption(file_name)} className={file_name == option ? "file-active" : "file"}>
+                                   <img src={smallFile} className="small-file-icon" />
+                                   <p className="file-name">{file_name}</p>
+                              </div>
+                         </div>
+               ))}
 
-           
 
-           
 
-          {/* <div className="all-files">
+
+
+               {/* <div className="all-files">
                <div onClick={() => setOption("discounts_1")} className="file">
                     <img src={smallFile} className="small-file-icon" />
                     <p className="file-name">discounts_1</p>
@@ -79,6 +81,6 @@ export const FilesList = ({option, setOption}) => {
 
            </div> */}
 
-    </div>
-  );
+          </div>
+     );
 };

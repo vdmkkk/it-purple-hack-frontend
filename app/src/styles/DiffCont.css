@@ -1,7 +1,7 @@
 .diff-cont {
-  z-index: 1000;
+  z-index: 5;
   width: 963px;
-  height: 677px;
+  /* height: 677px; */
   position: relative;
   display: flex;
   padding: 15px 15px 15px 15px;
@@ -33,7 +33,7 @@
 
 .data-diff {
   width: 432px;
-  height: 495px;
+  /* height: 495px; */
   border-radius: 20px;
   background-color: #FBF9FC;
   
