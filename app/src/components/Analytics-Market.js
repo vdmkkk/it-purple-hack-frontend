@@ -107,7 +107,7 @@ function AnalyticsMarket() {
         // console.log(data);
         // if (discountMeta.label != "Выбрать") setDiscount(discountLabels[0]);
 
-        // setMetadataForGraph(microcategoryMeta.label == "Топ-5" ? "microcategory_id" : regionMeta.label == "Топ-5" ? "region_id" : discountMeta.label == "Топ-5" ? "discount_id" : "");
+        setMetadataForGraph(microcategoryMeta.label == "Топ-5" ? "microcategory_id" : regionMeta.label == "Топ-5" ? "region_id" : discountMeta.label == "Топ-5" ? "discount_id" : "");
         setMetadataForDumbbell(microcategoryMeta.label == "Выбрать" ? "microcategory_id" : regionMeta.label == "Выбрать" ? "region_id" : discountMeta.label == "Выбрать" ? "discount_id" : "");
 
     }, [discount, region, microcategory, discountMeta, regionMeta, microcategoryMeta, header]);

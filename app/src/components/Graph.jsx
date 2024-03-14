@@ -179,7 +179,8 @@ const primaryColors = [
 ]
 
 export const Graph = ({mockData, metadata, type}) => {
-  
+
+  console.log("metadata", metadata)
 
   const [data, setData] = useState(mockData);
 
