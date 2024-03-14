@@ -34,7 +34,7 @@
     list-style: none;
     max-height: 200px;
     overflow-y: auto;
-    z-index: 2;
+    z-index: 10;
     border-radius: 20px;
 }
 
@@ -47,6 +47,7 @@
     animation: onUnFocus .3s forwards;
     font-size: 16px;
     font-weight: 400;
+    z-index: 10;
 }
 
 @keyframes onFocus {

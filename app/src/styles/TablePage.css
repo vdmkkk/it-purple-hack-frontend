@@ -45,7 +45,7 @@
 }
 
 .right-side {
-  padding-right: 25px;
+  /* padding-right: 25px; */
   width: 100%;
 }
 
@@ -54,4 +54,12 @@
   display: flex;
   justify-content:flex-start;
   gap:25px;
+}
+
+
+.storage-container {
+  width: 65%;
+  display: flex;
+  margin-left: 2%;
+  justify-content: space-between;
 }

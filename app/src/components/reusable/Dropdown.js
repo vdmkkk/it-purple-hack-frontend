@@ -7,7 +7,7 @@ import closeDropDown from '../../assets/icons/closeDropDown.svg'
 
 
 function Dropdown({id, label, selectedOption, setSelectedOption, isOpen, setIsOpen, labels}) {
-    const placeholder = label
+    // const placeholder = label
 
     const toggleDropdown = () => isOpen == id ? setIsOpen(-1) : setIsOpen(id);
 
