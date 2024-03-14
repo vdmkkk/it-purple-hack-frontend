@@ -33,7 +33,7 @@ export const ProfileEdit = ({AccountName}) => {
 
                <div className="date-of-birth">
                     <p>Дата рождения</p>
-                    <p>11.09.2001</p>
+                    <p>12.08.2006</p>
                </div>
 
               <div className="other-stuff">

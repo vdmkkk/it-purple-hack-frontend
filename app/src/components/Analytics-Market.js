@@ -2,7 +2,7 @@ import { Graph } from './Graph';
 import { useState, useEffect, useMemo } from 'react';
 
 import sourceData from "../data/sourceData.json";
-import mockData from '../data/mock.json'
+import mockData from '../data/mock1.json'
 import Dropdown from './reusable/Dropdown';
 import '../styles/Analytics-Market.css';
 import { SidePanel } from './reusable/SidePanel';
@@ -14,6 +14,7 @@ import person from '../assets/icons/person-fill.svg'
 
 import greenWideLine1 from '../assets/icons/greenWideLine1.svg'
 import greenWideLine2 from '../assets/icons/greenWideLine2.svg'
+import LineChart from './Dumbbell.jsx';
 
 
 function AnalyticsMarket() {
@@ -39,6 +40,7 @@ function AnalyticsMarket() {
     // console.log(discount, discountLabels);
 
     const [metadataForGraph, setMetadataForGraph] = useState("")
+    const [metadataForDumbbell, setMetadataForDumbbell] = useState("")
 
     const [isOpen, setIsOpen] = useState(-1);
 
@@ -99,19 +101,13 @@ function AnalyticsMarket() {
         // console.log(data);
         // if (discountMeta.label != "Выбрать") setDiscount(discountLabels[0]);
         setMetadataForGraph(microcategoryMeta.label == "Топ-5" ? "microcategory_id" : regionMeta.label == "Топ-5" ? "region_id" : discountMeta.label == "Топ-5" ? "discount_id" : "");
-
+        setMetadataForDumbbell(microcategoryMeta.label == "Выбрать" ? "microcategory_id" : regionMeta.label == "Выбрать" ? "region_id" : discountMeta.label == "Выбрать" ? "discount_id" : "");
 
     }, [discount, region, microcategory, discountMeta, regionMeta, microcategoryMeta, header]);
 
-    // useEffect(()=> {
-
-    // }, [header]);
 
     return (
         <div className="App">
-
-
-
 
     <img src={greenWideLine1} className='green-wide-line-1'></img>
     <img src={greenWideLine2} className='green-wide-line-2'></img>
@@ -149,6 +145,10 @@ function AnalyticsMarket() {
                         </div>
                     </div>
                     <Graph mockData={data} metadata={metadataForGraph} type={header}></Graph>
+                    <div className='dumb-bell-cont'>
+
+                    </div>
+                    <LineChart mockData={data} metadata={metadataForDumbbell} type={header}/>
                 </div>
 
             </div>

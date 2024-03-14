@@ -49,6 +49,7 @@
 .insidePanel h1 {
   margin-block-end: 0px;
   cursor:default;
+  /* transform: translate(-10px); */
 }
 
 .insidePanel h2 {
@@ -71,6 +72,7 @@
   cursor: pointer;
   display: flex;
   justify-content: flex-start;
+  
   gap: 10px;
   font-size: 16px;
   color: #ADB5BD;
