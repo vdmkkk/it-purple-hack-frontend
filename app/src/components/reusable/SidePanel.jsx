@@ -79,7 +79,7 @@ export const SidePanel = ({pageState}) => {
                   <h3> Изменения </h3>
               </div>
 
-              <div className={pageState=="server-page" ? 'choosen-topic' : 'topic'} onClick={() => window.open("http://81.200.152.232:16686/search")}>
+              <div className={pageState=="server-page" ? 'choosen-topic' : 'topic'} onClick={() => window.open("http://45.8.99.29:16686/search")}>
                   <img className={pageState=='server-page' ? "dark-image-topic" : "image-topic"} src={server}/>
                   <h3> Сервер </h3>
               </div>

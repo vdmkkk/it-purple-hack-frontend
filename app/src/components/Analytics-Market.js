@@ -154,7 +154,7 @@ function AnalyticsMarket() {
                     <div className='dumb-bell-cont'>
 
                     </div>
-                    <LineChart mockData={[discountMeta.label, regionMeta.label, microcategoryMeta.label].reduce((acc, val) => (acc[val] = (acc[val] || 0) + 1, acc), {})["Выбрать"] == 2 ? [timeData.sort((a, b) => {return b["changes"].length - a["changes"].length})[0]] : timeData} metadata={metadataForDumbbell} type={header}/>
+                    {timeData != undefined ? <LineChart mockData={[discountMeta.label, regionMeta.label, microcategoryMeta.label].reduce((acc, val) => (acc[val] = (acc[val] || 0) + 1, acc), {})["Выбрать"] == 2 ? [timeData.sort((a, b) => {return b["changes"].length - a["changes"].length})[0]] : timeData} metadata={metadataForDumbbell} type={header}/> : <div/>}
                 </div>
 
             </div>

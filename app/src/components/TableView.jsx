@@ -61,7 +61,7 @@ export const TableView = ({file}) => {
      }
 
 
-     const getMatrix = async (name) => {
+     const getMatrix = async (name, mcSearch, lcSearch) => {
           const headers = {
                'Accept': 'application/json',
                'Content-Type': 'application/json'
@@ -92,7 +92,7 @@ export const TableView = ({file}) => {
                     if (response.status == 200) {
                          console.log('qq', response.data);
                          setFilename(response.data.filter((item) => item["name"].includes(file + "_")).sort((a, b) => { return new Date(b["timestamp"]) - new Date(a["timestamp"]) })[0]["name"]);
-                         getMatrix(response.data.filter((item) => item["name"].includes(file + "_")).sort((a, b) => { return new Date(b["timestamp"]) - new Date(a["timestamp"]) })[0]["name"]);
+                         getMatrix(response.data.filter((item) => item["name"].includes(file + "_")).sort((a, b) => { return new Date(b["timestamp"]) - new Date(a["timestamp"]) })[0]["name"], mcSearch, lcSearch);
                          console.log('meow', response.data.filter((item) => item["name"].includes(file + "_")).sort((a, b) => { return new Date(b["timestamp"]) - new Date(a["timestamp"]) })[0]["name"])
                          getMaxPages(response.data.filter((item) => item["name"].includes(file + "_")).sort((a, b) => { return new Date(b["timestamp"]) - new Date(a["timestamp"]) })[0]["name"]);
                     }
@@ -134,12 +134,12 @@ export const TableView = ({file}) => {
 
      function handleMcSearch(value) {
           setMcSearch(value);
-          getMatrix(filename);
+          getMatrix(filename, value, "");
           // setTableData(plainData.filter(item => item["microcategory_id"].toString().toLowerCase().startsWith(value.toLowerCase())));
      }
      function handleLcSearch(value) {
           setLcSearch(value);
-          getMatrix(filename);
+          getMatrix(filename, "", value);
           // setTableData(plainData.filter(item => item["region_id"].toString().toLowerCase().startsWith(value.toLowerCase())));
      }
 
